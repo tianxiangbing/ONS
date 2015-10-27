@@ -1,0 +1,31 @@
+{
+  "name": "ONS",
+  "version": "1.0.0",
+  "description": "ONS APP",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tianxiangbing/ONS.git"
+  },
+  "keywords": [
+    "app",
+    "emberjs"
+  ],
+  "author": "tianxiangbing",
+  "license": "www.lovewebgames.com",
+  "bugs": {
+    "url": "https://github.com/tianxiangbing/ONS/issues"
+  },
+  "homepage": "https://github.com/tianxiangbing/ONS",
+  "devDependencies": {
+    "grunt": "latest",
+    "grunt-contrib-watch": "latest",
+    "grunt-contrib-concat":"latest",
+    "handlebars": "~1.3.0",
+    "ember-template-compiler": "~1.5.0",
+    "grunt-ember-templates": "~0.4.18"
+  }
+}

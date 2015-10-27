@@ -1,0 +1,24 @@
+{
+  "name": "ONS",
+  "version": "1.0.0",
+  "homepage": "https://github.com/tianxiangbing/ONS",
+  "authors": [
+    "tianxiangbing <55342775@qq.com>"
+  ],
+  "description": "ONS APP",
+  "keywords": [
+    "ONS"
+  ],
+  "license": "lovewebgames.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "1.9.1",
+    "ember": "~1.5"
+  }
+}
