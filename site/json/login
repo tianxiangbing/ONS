@@ -1,0 +1,12 @@
+callback({
+	"content":{
+		"username":"18667040027",
+		"nickname":"叶雨冰星",
+		"sex":"男",
+		"area":"",
+		"token":"ABDADFFAEEE"
+	},
+	"msg":"登录成功",
+	"state": true,
+	"code":200
+})

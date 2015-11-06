@@ -24,8 +24,10 @@
     "grunt": "latest",
     "grunt-contrib-watch": "latest",
     "grunt-contrib-concat":"latest",
-    "handlebars": "~1.3.0",
     "ember-template-compiler": "~1.5.0",
-    "grunt-ember-templates": "~0.4.18"
+    "grunt-ember-templates": "~0.4.18",
+    "grunt-contrib-cssmin": "^0.12.2",
+    "grunt-contrib-copy":"latest",
+    "grunt-ember-template-compiler":"latest"
   }
 }

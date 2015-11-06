@@ -7,13 +7,17 @@ module.exports = function(grunt) {
 		pkg:grunt.file.readJSON('package.json'),
 		watch: config('watch'),
 		concat:config('concat'),
-		emberTemplates:config('emberTemplates')
+		copy:config('copy'),
+		emberTemplates:config('emberTemplates'),
+		cssmin:config('cssmin')
 	}
 	console.log("=====================")
-	console.log(cfg)
+	//console.log(cfg)
 	grunt.initConfig(cfg);
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-ember-templates');
+	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.registerTask('default', []);
 };
