@@ -23,6 +23,7 @@ Ember.Router.map(function() {
 	this.resource('personal-data', {
 		path: 'personal-data/:id'
 	});
+	this.resource('regist',{path:'regist'});
 });
 App.IndexRoute = Ember.Route.extend({
 	beforeModel: function() {

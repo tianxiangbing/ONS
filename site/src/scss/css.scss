@@ -1,0 +1,31 @@
+@import "base";
+@import '../lib/dialog/dialog.css';
+$fontSize:13px;
+body{font-size: $fontSize;}
+.txt-input{
+	border:none;
+	border-bottom:$border;
+	height: nth($inputHeight,1);
+	line-height: nth($inputHeight,2);
+	padding:$inputPadding;
+	box-sizing: $boxSizing;
+	display: $block;
+	width:$inputWidth;
+}
+.login{
+	margin:$center;
+	width:7rem;
+	margin-top:45%;
+	input{
+		margin-bottom: 10px;
+	}
+}
+.btn-green{
+	background-color: $green;
+}
+.btn-gray{
+	background-color: $gray;
+}
+.reg-tip{
+	margin-top:30px;text-align: center;display: block;
+}

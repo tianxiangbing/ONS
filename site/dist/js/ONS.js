@@ -121,7 +121,6 @@ App.User.reopenClass({
 });
 
 var UserInfo={};
-
 function ajax(param) {
 	var dtd = $.Deferred();
 	Ember.$.ajax({
@@ -140,18 +139,24 @@ function ajax(param) {
 	});
 	return dtd.promise();
 };
-function alert(){
-	$.alert.apply(null,Array.prototype.slice.call(arguments))
-}
-window.alert=alert;
 
+function alert() {
+	$.alert.apply(null, Array.prototype.slice.call(arguments))
+}
+window.alert = alert;
 var LocalStorage = {
-	add:function(key,value){
-		localStorage[key]=value;
-	},remove:function(key){
+	add: function(key, value) {
+		localStorage[key] = value;
+	},
+	remove: function(key) {
 		localStorage.removeItem(key);
 	}
 }
+function initFontSize() {
+	document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + 'px';
+}
+initFontSize()
+$(window).on('orientationchange resize', initFontSize);
 Ember.Router.map(function() {
 	this.resource('index', {
 		path: "/"
@@ -177,6 +182,7 @@ Ember.Router.map(function() {
 	this.resource('personal-data', {
 		path: 'personal-data/:id'
 	});
+	this.resource('regist',{path:'regist'});
 });
 App.IndexRoute = Ember.Route.extend({
 	beforeModel: function() {

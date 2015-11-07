@@ -1,2 +1,5 @@
-{{input-user user=UserInfo}}
-<button {{action login}}>登录</button>
+<div class="login">
+	{{input-user user=UserInfo}}
+	<button class="btn btn-green btn-big mt20" {{action login}}>登录</button>
+		{{#link-to 'regist'  class="reg-tip"}}没有账号？点击注册.{{/link-to}}
+</div>

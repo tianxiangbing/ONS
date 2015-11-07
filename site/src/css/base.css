@@ -1,4 +1,3 @@
-@import url(../lib/dialog/dialog.css);
 html, body, ul, li, input {
   padding: 0;
   margin: 0;
@@ -185,34 +184,3 @@ a {
 
 .pl30 {
   padding-left: 30px; }
-
-body {
-  font-size: 13px; }
-
-.txt-input {
-  border: none;
-  border-bottom: 1px solid #e5e5e5;
-  height: 30px;
-  line-height: 30px;
-  padding: 2px 5px;
-  box-sizing: border-box;
-  display: block;
-  width: 100%; }
-
-.login {
-  margin: 0 auto;
-  width: 7rem;
-  margin-top: 45%; }
-  .login input {
-    margin-bottom: 10px; }
-
-.btn-green {
-  background-color: #5A5954; }
-
-.btn-gray {
-  background-color: #55534C; }
-
-.reg-tip {
-  margin-top: 30px;
-  text-align: center;
-  display: block; }

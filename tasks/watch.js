@@ -25,6 +25,13 @@ module.exports ={
 		options: {
 			livereload: 35729,
 		},
-		task:['cssmin']
+		tasks:['cssmin']
+	},
+	sass:{
+		files:['site/src/scss/*.scss'],
+		options:{
+			livereload:35729
+		},
+		tasks:["sass",'cssmin']
 	}
 }
