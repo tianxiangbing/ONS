@@ -21,7 +21,11 @@ var mine= {
   "wav": "audio/x-wav",
   "wma": "audio/x-ms-wma",
   "wmv": "video/x-ms-wmv",
-  "xml": "text/xml"
+  "xml": "text/xml",
+  "woff":"application/x-font-woff",
+  "eot":"application/x-font-eot",
+  "ttf":"application/x-font-ttf",
+  "svg":"application/x-font-svg"
 };
 var path=require('path');
 var server = http.createServer(function (request, response) {

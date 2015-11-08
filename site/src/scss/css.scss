@@ -1,7 +1,8 @@
 @import "base";
 @import '../lib/dialog/dialog.css';
+@import 'iconfont.css';
 $fontSize:13px;
-body{font-size: $fontSize;}
+body{font-size: $fontSize;color:$color;font-family: $fontFamily;}
 .txt-input{
 	border:none;
 	border-bottom:$border;
@@ -12,12 +13,29 @@ body{font-size: $fontSize;}
 	display: $block;
 	width:$inputWidth;
 }
-.login{
-	margin:$center;
+.login,.regist{
 	width:7rem;
-	margin-top:45%;
+	margin-left: .25rem;
+	position: fixed;
+	bottom:30%;
 	input{
 		margin-bottom: 10px;
+	}
+	.input-uname,.input-pwd{
+		position: relative;
+		.iconfont{
+			color:$fontColor;
+			position: absolute;
+			bottom:8px;
+			left:5px;
+		}
+		input{padding:0 25px;}
+		.pwd-look{
+			left:auto;right:5px;
+		}
+		.pwd-look.active{
+			color:#333333;
+		}
 	}
 }
 .btn-green{

@@ -17,6 +17,10 @@ function ajax(param) {
 	return dtd.promise();
 };
 
+function log(msg) {
+	console && console.log(msg);
+}
+
 function alert() {
 	$.alert.apply(null, Array.prototype.slice.call(arguments))
 }
@@ -29,8 +33,16 @@ var LocalStorage = {
 		localStorage.removeItem(key);
 	}
 }
+
 function initFontSize() {
 	document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + 'px';
 }
-initFontSize()
+initFontSize();
 $(window).on('orientationchange resize', initFontSize);
+Ember.Handlebars.helper('equal', function(v1, v2, options) {
+	if (v1 == v2) {
+		return options.fn(this);
+	} else {
+		return options.inverse(this);
+	}
+});

@@ -1,2 +1,15 @@
-{{input value=model.username class="txt-input"}}
-{{input value=model.password class="txt-input"}}
+<div class="input-uname">
+<i class="iconfont">&#xe61b;</i>
+{{input value=username class="txt-input" placeholder="邮箱/手机号码"}}
+</div>
+<div class="input-pwd">
+<i class="iconfont">&#xe60e;</i>
+{{#if islook}}
+<i class="iconfont pwd-look acitve" {{action "lookpwd" on="click"}}>&#xe616;</i>
+{{input type="text" value=password class="txt-input" placeholder="6-18位密码"}}
+{{else}}
+<i class="iconfont pwd-look" {{action "lookpwd" on="click"}}>&#xe617;</i>
+{{input type="password" value=password class="txt-input" placeholder="6-18位密码"}}
+{{/if}}
+</div>
+<button class="btn btn-green btn-big mt20" {{action "click"}}>{{btnText}}</button>

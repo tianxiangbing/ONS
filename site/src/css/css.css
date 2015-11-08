@@ -1,4 +1,5 @@
 @import url(../lib/dialog/dialog.css);
+@import url(iconfont.css);
 html, body, ul, li, input {
   padding: 0;
   margin: 0;
@@ -187,7 +188,9 @@ a {
   padding-left: 30px; }
 
 body {
-  font-size: 13px; }
+  font-size: 13px;
+  color: #333;
+  font-family: "Microsoft YaHei"; }
 
 .txt-input {
   border: none;
@@ -199,15 +202,30 @@ body {
   display: block;
   width: 100%; }
 
-.login {
-  margin: 0 auto;
+.login, .regist {
   width: 7rem;
-  margin-top: 45%; }
-  .login input {
+  margin-left: .25rem;
+  position: fixed;
+  bottom: 30%; }
+  .login input, .regist input {
     margin-bottom: 10px; }
+  .login .input-uname, .login .input-pwd, .regist .input-uname, .regist .input-pwd {
+    position: relative; }
+    .login .input-uname .iconfont, .login .input-pwd .iconfont, .regist .input-uname .iconfont, .regist .input-pwd .iconfont {
+      color: #e5e5e5;
+      position: absolute;
+      bottom: 8px;
+      left: 5px; }
+    .login .input-uname input, .login .input-pwd input, .regist .input-uname input, .regist .input-pwd input {
+      padding: 0 25px; }
+    .login .input-uname .pwd-look, .login .input-pwd .pwd-look, .regist .input-uname .pwd-look, .regist .input-pwd .pwd-look {
+      left: auto;
+      right: 5px; }
+    .login .input-uname .pwd-look.active, .login .input-pwd .pwd-look.active, .regist .input-uname .pwd-look.active, .regist .input-pwd .pwd-look.active {
+      color: #333333; }
 
 .btn-green {
-  background-color: #5A5954; }
+  background-color: #1DAF4D; }
 
 .btn-gray {
   background-color: #55534C; }

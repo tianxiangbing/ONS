@@ -3,6 +3,8 @@ $fontSize:12px !default;
 $btnFontSize:14px !default;
 .f12{font-size:$fontSize;}
 $linkColor: #59AAE1 #59AAE1 !default;
+$fontFamily: "Microsoft YaHei";
+$color:#333 !default;
 a{
   color:nth($linkColor,1);
   text-decoration: none;
@@ -38,7 +40,7 @@ $btnAlign:center;
 	cursor: pointer;
 }
 $gray:#55534C;
-$green: #5A5954;
+$green: #1DAF4D;
 $attrType:(m:margin,p:padding);
 $direction:(t:top, r:right, b:bottom, l:left);
 $px:5 10 15 20 25 30;
@@ -49,3 +51,4 @@ $px:5 10 15 20 25 30;
 		}
 	}
 }
+$fontColor:#e5e5e5;

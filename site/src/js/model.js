@@ -72,8 +72,6 @@ App.User.reopenClass({
 			url: 'login',
 			data: user
 		}).done(function(data){
-			LocalStorageCache.add('userinfo' , data);
-			LocalStorageCache.add('token',data.token,1111110);
 		});
 	},
 	logout:function(){

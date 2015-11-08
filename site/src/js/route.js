@@ -41,7 +41,14 @@ App.IndexRoute = Ember.Route.extend({
 	}
 });
 App.LoginRoute = Ember.Route.extend({
-	model: function() {}
+	model: function() {
+		return {};
+	},
+	setupController:function(c,m){
+		LocalStorageCache.get('username').done(function(r){
+			c.set('username',r)
+		});
+	}
 });
 App.InfoRoute = Ember.Route.extend({
 	model: function() {

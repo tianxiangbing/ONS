@@ -1,13 +1,36 @@
 var App = Ember.Application.create();
 App.InputUserComponent = Ember.Component.extend({
+	islook:false,
+	actions:{
+		lookpwd:function(){
+			this.set("islook",!this.get('islook'));
+		},
+		click:function(){
+			this.sendAction('action',this.get('username'),this.get('password'))
+		}
+	}
 });
 App.LoginController = Ember.Controller.extend({
-	username: '',
-	password: '',
+	password:'',
+	username:'',
 	actions: {
 		login: function() {
+			console.log(arguments)
 			var _this = this;
-			App.User.login(this.get('username'), this.get('password')).done(function(data) {
+			var uname = this.get('username')||'';
+			var pwd = this.get('password')||'';
+			if (!(/^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/.test(uname) || /^1[3|5|7|8|][0-9]{9}$/.test(uname))){
+				alert('用户名必须为手机号或邮箱.');
+				return false;
+			}
+			if (pwd.length < 6 || pwd.length > 18) {
+				alert('密码必须在6-18个字之间');
+				return false;
+			}
+			App.User.login(uname, pwd).done(function(data) {
+				LocalStorageCache.add('userinfo', data);
+				LocalStorageCache.add('username', uname);
+				LocalStorageCache.add('token', data.token, 1111110);
 				if (!data.sex || !data.area) {
 					alert('请先完善资料！');
 					_this.transitionToRoute('info');
@@ -16,15 +39,22 @@ App.LoginController = Ember.Controller.extend({
 		}
 	}
 });
-App.ChangepwdController = Ember.Controller.extend({
+App.RegistController = Ember.Controller.extend({
 	actions:{
-		changepwd:function(){
+		regist:function(username,password){
+			log(arguments)
+		}
+	}
+});
+App.ChangepwdController = Ember.Controller.extend({
+	actions: {
+		changepwd: function() {
 			var _this = this;
-			var model  = this.get('model');
+			var model = this.get('model');
 			UserInfo.username = model.username;
 			UserInfo.password = model.password;
-			App.User.changepwd(UserInfo).done(function(){
-				alert('修改成功',null,function(){
+			App.User.changepwd(UserInfo).done(function() {
+				alert('修改成功', null, function() {
 					_this.transitionToRoute('info');
 				});
 			});
@@ -105,8 +135,6 @@ App.User.reopenClass({
 			url: 'login',
 			data: user
 		}).done(function(data){
-			LocalStorageCache.add('userinfo' , data);
-			LocalStorageCache.add('token',data.token,1111110);
 		});
 	},
 	logout:function(){
@@ -140,6 +168,10 @@ function ajax(param) {
 	return dtd.promise();
 };
 
+function log(msg) {
+	console && console.log(msg);
+}
+
 function alert() {
 	$.alert.apply(null, Array.prototype.slice.call(arguments))
 }
@@ -152,11 +184,19 @@ var LocalStorage = {
 		localStorage.removeItem(key);
 	}
 }
+
 function initFontSize() {
 	document.documentElement.style.fontSize = document.documentElement.clientWidth / 7.5 + 'px';
 }
-initFontSize()
+initFontSize();
 $(window).on('orientationchange resize', initFontSize);
+Ember.Handlebars.helper('equal', function(v1, v2, options) {
+	if (v1 == v2) {
+		return options.fn(this);
+	} else {
+		return options.inverse(this);
+	}
+});
 Ember.Router.map(function() {
 	this.resource('index', {
 		path: "/"
@@ -200,7 +240,14 @@ App.IndexRoute = Ember.Route.extend({
 	}
 });
 App.LoginRoute = Ember.Route.extend({
-	model: function() {}
+	model: function() {
+		return {};
+	},
+	setupController:function(c,m){
+		LocalStorageCache.get('username').done(function(r){
+			c.set('username',r)
+		});
+	}
 });
 App.InfoRoute = Ember.Route.extend({
 	model: function() {
