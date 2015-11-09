@@ -27,7 +27,7 @@ function program1(depth0,data) {
   var buffer = '', helper, options;
   data.buffer.push("\r\n<i class=\"iconfont pwd-look acitve\" ");
   data.buffer.push(escapeExpression(helpers.action.call(depth0, "lookpwd", {hash:{
-    'on': ("click")
+    'on': ("touchStart")
   },hashTypes:{'on': "STRING"},hashContexts:{'on': depth0},contexts:[depth0],types:["STRING"],data:data})));
   data.buffer.push(">&#xe616;</i>\r\n");
   data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
@@ -45,7 +45,7 @@ function program3(depth0,data) {
   var buffer = '', helper, options;
   data.buffer.push("\r\n<i class=\"iconfont pwd-look\" ");
   data.buffer.push(escapeExpression(helpers.action.call(depth0, "lookpwd", {hash:{
-    'on': ("click")
+    'on': ("touchStart")
   },hashTypes:{'on': "STRING"},hashContexts:{'on': depth0},contexts:[depth0],types:["STRING"],data:data})));
   data.buffer.push(">&#xe617;</i>\r\n");
   data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{

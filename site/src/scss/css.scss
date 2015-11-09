@@ -1,49 +1,74 @@
 @import "base";
-@import '../lib/dialog/dialog.css';
-@import 'iconfont.css';
-$fontSize:13px;
-body{font-size: $fontSize;color:$color;font-family: $fontFamily;}
-.txt-input{
-	border:none;
-	border-bottom:$border;
-	height: nth($inputHeight,1);
-	line-height: nth($inputHeight,2);
-	padding:$inputPadding;
-	box-sizing: $boxSizing;
-	display: $block;
-	width:$inputWidth;
+@import "../lib/dialog/dialog.css";
+@import "iconfont.css";
+
+$fontSize: 13px;
+
+body {
+    font-size: $fontSize;
+    color: $color;
+    font-family: $fontFamily;
 }
-.login,.regist{
-	width:7rem;
-	margin-left: .25rem;
-	position: fixed;
-	bottom:30%;
-	input{
-		margin-bottom: 10px;
-	}
-	.input-uname,.input-pwd{
-		position: relative;
-		.iconfont{
-			color:$fontColor;
-			position: absolute;
-			bottom:8px;
-			left:5px;
-		}
-		input{padding:0 25px;}
-		.pwd-look{
-			left:auto;right:5px;
-		}
-		.pwd-look.active{
-			color:#333333;
-		}
-	}
+
+.txt-input {
+    border: none;
+    border-bottom: $border;
+    height: nth($inputHeight, 1);
+    line-height: nth($inputHeight, 2);
+    padding: $inputPadding;
+    box-sizing: $boxSizing;
+    display: $block;
+    width: $inputWidth;
+    letter-spacing: 2px;
 }
-.btn-green{
-	background-color: $green;
+
+.login, .regist {
+    width: 7rem;
+    margin-left: .25rem;
+    position: fixed;
+    bottom: 30%;
+
+    input {
+        margin-bottom: 10px;
+    }
+
+    .input-uname, .input-pwd {
+        position: relative;
+
+        .iconfont {
+            color: $fontColor;
+            position: absolute;
+            bottom: 8px;
+            left: 5px;
+        }
+
+        input {
+            padding: 0 25px;
+        }
+
+        .pwd-look {
+            left: auto;
+            right: 5px;
+            width: 20px;
+            text-align: right;
+        }
+
+        .pwd-look.active {
+            color: #333333;
+        }
+    }
 }
-.btn-gray{
-	background-color: $gray;
+
+.btn-green {
+    background-color: $green;
 }
-.reg-tip{
-	margin-top:30px;text-align: center;display: block;
+
+.btn-gray {
+    background-color: $gray;
+}
+
+.reg-tip {
+    margin-top: 30px;
+    text-align: center;
+    display: block;
 }

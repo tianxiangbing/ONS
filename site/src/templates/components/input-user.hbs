@@ -5,10 +5,10 @@
 <div class="input-pwd">
 <i class="iconfont">&#xe60e;</i>
 {{#if islook}}
-<i class="iconfont pwd-look acitve" {{action "lookpwd" on="click"}}>&#xe616;</i>
+<i class="iconfont pwd-look acitve" {{action "lookpwd" on="touchStart"}}>&#xe616;</i>
 {{input type="text" value=password class="txt-input" placeholder="6-18位密码"}}
 {{else}}
-<i class="iconfont pwd-look" {{action "lookpwd" on="click"}}>&#xe617;</i>
+<i class="iconfont pwd-look" {{action "lookpwd" on="touchStart"}}>&#xe617;</i>
 {{input type="password" value=password class="txt-input" placeholder="6-18位密码"}}
 {{/if}}
 </div>

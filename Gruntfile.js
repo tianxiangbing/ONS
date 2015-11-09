@@ -10,7 +10,8 @@ module.exports = function(grunt) {
 		copy: config('copy'),
 		emberTemplates: config('emberTemplates'),
 		cssmin: config('cssmin'),
-		sass: config('sass')
+		sass: config('sass'),
+		connect:config('connect')
 	}
 	console.log("=====================")
 		//console.log(cfg)
@@ -21,5 +22,6 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-sass');
-	grunt.registerTask('default', []);
+	grunt.loadNpmTasks('grunt-contrib-connect');
+	grunt.registerTask('default', ['connect','watch']);
 };
