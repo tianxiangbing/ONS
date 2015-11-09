@@ -1,6 +1,10 @@
 <div class="input-uname">
 <i class="iconfont">&#xe61b;</i>
+{{#if isReadOnly}}
+{{input value=username readonly="readonly" class="txt-input" placeholder="邮箱/手机号码"}}
+{{else}}
 {{input value=username class="txt-input" placeholder="邮箱/手机号码"}}
+{{/if}}
 </div>
 <div class="input-pwd">
 <i class="iconfont">&#xe60e;</i>

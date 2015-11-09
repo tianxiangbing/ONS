@@ -59,7 +59,12 @@ App.LogoutRoute = Ember.Route.extend({
 App.ChangepwdRoute = Ember.Route.extend({
 	model: function() {
 		console.log('change')
-		return LocalStorageCache.get('userinfo');
+		//return LocalStorageCache.get('userinfo');
+	},
+	setupController:function(c,m){
+		LocalStorageCache.get('username').done(function(r){
+			c.set('username',r);
+		});
 	}
 });
 App.ListRoute = Ember.Route.extend({

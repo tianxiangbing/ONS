@@ -1,2 +1,3 @@
-{{input-user model=model userable=true}}
-<input type="button" value="确认修改" {{action changepwd}}>
+<div class="login">
+{{input-user username=username password=password userable=true param="change" btnClass="btn-green" action="changepwd" btnText="修改密码"}}
+</div>

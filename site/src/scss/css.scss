@@ -18,8 +18,11 @@ body {
     display: $block;
     width: $inputWidth;
     letter-spacing: 2px;
+    font-weight:500;
 }
-
+.txt-input[readonly]{
+    border:none;
+}
 .login, .regist {
     width: 7rem;
     margin-left: .25rem;

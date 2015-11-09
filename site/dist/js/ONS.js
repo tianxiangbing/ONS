@@ -1,8 +1,11 @@
 var App = Ember.Application.create();
 App.InputUserComponent = Ember.Component.extend({
 	islook: false,
+	isReadOnly: function() {
+		return this.get('param')=='change'
+	}.property('param'),
 	classname: function() {
-		return 'btn btn-big mt20 '+this.get('btnClass')
+		return 'btn btn-big mt20 ' + this.get('btnClass')
 	}.property("btnClass"),
 	actions: {
 		lookpwd: function() {
@@ -52,11 +55,10 @@ App.RegistController = Ember.Controller.extend({
 });
 App.ChangepwdController = Ember.Controller.extend({
 	actions: {
-		changepwd: function() {
+		changepwd: function(username,password) {
 			var _this = this;
-			var model = this.get('model');
-			UserInfo.username = model.username;
-			UserInfo.password = model.password;
+			UserInfo.username= username;
+			UserInfo.password = password;
 			App.User.changepwd(UserInfo).done(function() {
 				alert('修改成功', null, function() {
 					_this.transitionToRoute('info');
@@ -276,7 +278,12 @@ App.LogoutRoute = Ember.Route.extend({
 App.ChangepwdRoute = Ember.Route.extend({
 	model: function() {
 		console.log('change')
-		return LocalStorageCache.get('userinfo');
+		//return LocalStorageCache.get('userinfo');
+	},
+	setupController:function(c,m){
+		LocalStorageCache.get('username').done(function(r){
+			c.set('username',r);
+		});
 	}
 });
 App.ListRoute = Ember.Route.extend({

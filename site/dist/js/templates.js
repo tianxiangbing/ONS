@@ -5,13 +5,17 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   var buffer = '', helper, options, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
 
 
+  data.buffer.push("<div class=\"login\">\r\n");
   data.buffer.push(escapeExpression((helper = helpers['input-user'] || (depth0 && depth0['input-user']),options={hash:{
-    'model': ("model"),
-    'userable': (true)
-  },hashTypes:{'model': "ID",'userable': "BOOLEAN"},hashContexts:{'model': depth0,'userable': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input-user", options))));
-  data.buffer.push("\r\n<input type=\"button\" value=\"确认修改\" ");
-  data.buffer.push(escapeExpression(helpers.action.call(depth0, "changepwd", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data})));
-  data.buffer.push(">");
+    'username': ("username"),
+    'password': ("password"),
+    'userable': (true),
+    'param': ("change"),
+    'btnClass': ("btn-green"),
+    'action': ("changepwd"),
+    'btnText': ("修改密码")
+  },hashTypes:{'username': "ID",'password': "ID",'userable': "BOOLEAN",'param': "STRING",'btnClass': "STRING",'action': "STRING",'btnText': "STRING"},hashContexts:{'username': depth0,'password': depth0,'userable': depth0,'param': depth0,'btnClass': depth0,'action': depth0,'btnText': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input-user", options))));
+  data.buffer.push("\r\n</div>");
   return buffer;
   
 });
@@ -20,9 +24,36 @@ Ember.TEMPLATES["components/input-user"] = Ember.Handlebars.template(function an
 /**/) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', stack1, helper, options, escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing, self=this;
+  var buffer = '', stack1, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, self=this;
 
 function program1(depth0,data) {
+  
+  var buffer = '', helper, options;
+  data.buffer.push("\r\n");
+  data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
+    'value': ("username"),
+    'readonly': ("readonly"),
+    'class': ("txt-input"),
+    'placeholder': ("邮箱/手机号码")
+  },hashTypes:{'value': "ID",'readonly': "STRING",'class': "STRING",'placeholder': "STRING"},hashContexts:{'value': depth0,'readonly': depth0,'class': depth0,'placeholder': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
+  data.buffer.push("\r\n");
+  return buffer;
+  }
+
+function program3(depth0,data) {
+  
+  var buffer = '', helper, options;
+  data.buffer.push("\r\n");
+  data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
+    'value': ("username"),
+    'class': ("txt-input"),
+    'placeholder': ("邮箱/手机号码")
+  },hashTypes:{'value': "ID",'class': "STRING",'placeholder': "STRING"},hashContexts:{'value': depth0,'class': depth0,'placeholder': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
+  data.buffer.push("\r\n");
+  return buffer;
+  }
+
+function program5(depth0,data) {
   
   var buffer = '', helper, options;
   data.buffer.push("\r\n<i class=\"iconfont pwd-look acitve\" ");
@@ -40,7 +71,7 @@ function program1(depth0,data) {
   return buffer;
   }
 
-function program3(depth0,data) {
+function program7(depth0,data) {
   
   var buffer = '', helper, options;
   data.buffer.push("\r\n<i class=\"iconfont pwd-look\" ");
@@ -59,13 +90,10 @@ function program3(depth0,data) {
   }
 
   data.buffer.push("<div class=\"input-uname\">\r\n<i class=\"iconfont\">&#xe61b;</i>\r\n");
-  data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
-    'value': ("username"),
-    'class': ("txt-input"),
-    'placeholder': ("邮箱/手机号码")
-  },hashTypes:{'value': "ID",'class': "STRING",'placeholder': "STRING"},hashContexts:{'value': depth0,'class': depth0,'placeholder': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
+  stack1 = helpers['if'].call(depth0, "isReadOnly", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(3, program3, data),fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\r\n</div>\r\n<div class=\"input-pwd\">\r\n<i class=\"iconfont\">&#xe60e;</i>\r\n");
-  stack1 = helpers['if'].call(depth0, "islook", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(3, program3, data),fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],data:data});
+  stack1 = helpers['if'].call(depth0, "islook", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(7, program7, data),fn:self.program(5, program5, data),contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\r\n</div>\r\n<button  ");
   data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{

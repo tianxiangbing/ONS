@@ -36,11 +36,10 @@ App.RegistController = Ember.Controller.extend({
 });
 App.ChangepwdController = Ember.Controller.extend({
 	actions: {
-		changepwd: function() {
+		changepwd: function(username,password) {
 			var _this = this;
-			var model = this.get('model');
-			UserInfo.username = model.username;
-			UserInfo.password = model.password;
+			UserInfo.username= username;
+			UserInfo.password = password;
 			App.User.changepwd(UserInfo).done(function() {
 				alert('修改成功', null, function() {
 					_this.transitionToRoute('info');
