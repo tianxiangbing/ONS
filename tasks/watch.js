@@ -1,17 +1,23 @@
 module.exports ={
+	html:{
+		files:['site/**/*.html'],
+		options: {
+			livereload: 35729,
+		}
+	},
 	scripts: {
 		files: ['site/src/js/**/*.js'],
 		options: {
 			livereload: 35729,
 		},
-		tasks:['concat']
+		tasks:['concat','copy']
 	},
 	emberTemplates: {
 		files: 'site/src/**/*.hbs',
 		options: {
 			livereload: 35729,
 		},
-		tasks: ['emberTemplates']
+		tasks: ['emberTemplates:copy']
 	},
 	lib: {
 		files: ['site/src/lib/**/*.js','site/src/lib/**/*.css'],
@@ -33,5 +39,12 @@ module.exports ={
 			livereload:35729
 		},
 		tasks:["sass",'cssmin']
+	},
+	font:{
+		files:  ['*.eot','*.svg','*.ttf','*.woff'],
+		options:{
+			livereload:35729
+		},
+		tasks:["copy"]
 	}
 }

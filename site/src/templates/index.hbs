@@ -1,3 +1,12 @@
 {{outlet}}
-{{#link-to "list"}}会员列表{{/link-to}}
-{{#link-to "info"}}个人信息{{/link-to}}
+<div class="menu">
+	<div class="menu-container">
+		<div {{bindAttr class="classname"}}>
+			{{#link-to "list" class="members iconfont menu-child" activeClass="actived"}}&#xe61a;{{/link-to}}
+			{{#link-to "write" class="write iconfont menu-child" activeClass="actived"}}&#xe622;{{/link-to}}
+			{{#link-to "index" class="home iconfont menu-child" activeClass="actived"}}&#xe60b;{{/link-to}}
+			{{#link-to "info" class="user-center iconfont menu-child" activeClass="actived"}}&#xe61d;{{/link-to}}
+		</div>
+		<a class="select-menu iconfont" {{action "toggleMenu" on="click"}}>&#xe621;</a>
+	</div>
+</div>

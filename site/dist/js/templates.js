@@ -27,7 +27,7 @@ function program1(depth0,data) {
   var buffer = '', helper, options;
   data.buffer.push("\r\n<i class=\"iconfont pwd-look acitve\" ");
   data.buffer.push(escapeExpression(helpers.action.call(depth0, "lookpwd", {hash:{
-    'on': ("touchStart")
+    'on': ("click")
   },hashTypes:{'on': "STRING"},hashContexts:{'on': depth0},contexts:[depth0],types:["STRING"],data:data})));
   data.buffer.push(">&#xe616;</i>\r\n");
   data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
@@ -45,7 +45,7 @@ function program3(depth0,data) {
   var buffer = '', helper, options;
   data.buffer.push("\r\n<i class=\"iconfont pwd-look\" ");
   data.buffer.push(escapeExpression(helpers.action.call(depth0, "lookpwd", {hash:{
-    'on': ("touchStart")
+    'on': ("click")
   },hashTypes:{'on': "STRING"},hashContexts:{'on': depth0},contexts:[depth0],types:["STRING"],data:data})));
   data.buffer.push(">&#xe617;</i>\r\n");
   data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
@@ -67,7 +67,11 @@ function program3(depth0,data) {
   data.buffer.push("\r\n</div>\r\n<div class=\"input-pwd\">\r\n<i class=\"iconfont\">&#xe60e;</i>\r\n");
   stack1 = helpers['if'].call(depth0, "islook", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(3, program3, data),fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\r\n</div>\r\n<button class=\"btn btn-green btn-big mt20\" ");
+  data.buffer.push("\r\n</div>\r\n<button  ");
+  data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
+    'class': ("classname")
+  },hashTypes:{'class': "ID"},hashContexts:{'class': depth0},contexts:[],types:[],data:data})));
+  data.buffer.push("  ");
   data.buffer.push(escapeExpression(helpers.action.call(depth0, "click", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data})));
   data.buffer.push(">");
   stack1 = helpers._triageMustache.call(depth0, "btnText", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
@@ -81,28 +85,67 @@ Ember.TEMPLATES["index"] = Ember.Handlebars.template(function anonymous(Handleba
 /**/) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', stack1, helper, options, self=this, helperMissing=helpers.helperMissing;
+  var buffer = '', stack1, helper, options, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, self=this;
 
 function program1(depth0,data) {
   
   
-  data.buffer.push("会员列表");
+  data.buffer.push("&#xe61a;");
   }
 
 function program3(depth0,data) {
   
   
-  data.buffer.push("个人信息");
+  data.buffer.push("&#xe622;");
+  }
+
+function program5(depth0,data) {
+  
+  
+  data.buffer.push("&#xe60b;");
+  }
+
+function program7(depth0,data) {
+  
+  
+  data.buffer.push("&#xe61d;");
   }
 
   stack1 = helpers._triageMustache.call(depth0, "outlet", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\r\n");
-  stack1 = (helper = helpers['link-to'] || (depth0 && depth0['link-to']),options={hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "list", options) : helperMissing.call(depth0, "link-to", "list", options));
+  data.buffer.push("\r\n<div class=\"menu\">\r\n	<div class=\"menu-container\">\r\n		<div ");
+  data.buffer.push(escapeExpression((helper = helpers.bindAttr || (depth0 && depth0.bindAttr),options={hash:{
+    'class': ("classname")
+  },hashTypes:{'class': "STRING"},hashContexts:{'class': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "bindAttr", options))));
+  data.buffer.push(">\r\n			");
+  stack1 = (helper = helpers['link-to'] || (depth0 && depth0['link-to']),options={hash:{
+    'class': ("members iconfont menu-child"),
+    'activeClass': ("actived")
+  },hashTypes:{'class': "STRING",'activeClass': "STRING"},hashContexts:{'class': depth0,'activeClass': depth0},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "list", options) : helperMissing.call(depth0, "link-to", "list", options));
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\r\n");
-  stack1 = (helper = helpers['link-to'] || (depth0 && depth0['link-to']),options={hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(3, program3, data),contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "info", options) : helperMissing.call(depth0, "link-to", "info", options));
+  data.buffer.push("\r\n			");
+  stack1 = (helper = helpers['link-to'] || (depth0 && depth0['link-to']),options={hash:{
+    'class': ("write iconfont menu-child"),
+    'activeClass': ("actived")
+  },hashTypes:{'class': "STRING",'activeClass': "STRING"},hashContexts:{'class': depth0,'activeClass': depth0},inverse:self.noop,fn:self.program(3, program3, data),contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "write", options) : helperMissing.call(depth0, "link-to", "write", options));
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\r\n			");
+  stack1 = (helper = helpers['link-to'] || (depth0 && depth0['link-to']),options={hash:{
+    'class': ("home iconfont menu-child"),
+    'activeClass': ("actived")
+  },hashTypes:{'class': "STRING",'activeClass': "STRING"},hashContexts:{'class': depth0,'activeClass': depth0},inverse:self.noop,fn:self.program(5, program5, data),contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "index", options) : helperMissing.call(depth0, "link-to", "index", options));
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\r\n			");
+  stack1 = (helper = helpers['link-to'] || (depth0 && depth0['link-to']),options={hash:{
+    'class': ("user-center iconfont menu-child"),
+    'activeClass': ("actived")
+  },hashTypes:{'class': "STRING",'activeClass': "STRING"},hashContexts:{'class': depth0,'activeClass': depth0},inverse:self.noop,fn:self.program(7, program7, data),contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "info", options) : helperMissing.call(depth0, "link-to", "info", options));
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\r\n		</div>\r\n		<a class=\"select-menu iconfont\" ");
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "toggleMenu", {hash:{
+    'on': ("click")
+  },hashTypes:{'on': "STRING"},hashContexts:{'on': depth0},contexts:[depth0],types:["STRING"],data:data})));
+  data.buffer.push(">&#xe621;</a>\r\n	</div>\r\n</div>");
   return buffer;
   
 });
@@ -178,8 +221,9 @@ function program1(depth0,data) {
     'password': ("password"),
     'param': ("login"),
     'action': ("login"),
-    'btnText': ("登录")
-  },hashTypes:{'username': "ID",'password': "ID",'param': "STRING",'action': "STRING",'btnText': "STRING"},hashContexts:{'username': depth0,'password': depth0,'param': depth0,'action': depth0,'btnText': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input-user", options))));
+    'btnText': ("登录"),
+    'btnClass': ("btn-green")
+  },hashTypes:{'username': "ID",'password': "ID",'param': "STRING",'action': "STRING",'btnText': "STRING",'btnClass': "STRING"},hashContexts:{'username': depth0,'password': depth0,'param': depth0,'action': depth0,'btnText': depth0,'btnClass': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input-user", options))));
   data.buffer.push("\r\n		");
   stack1 = (helper = helpers['link-to'] || (depth0 && depth0['link-to']),options={hash:{
     'class': ("reg-tip")
@@ -216,10 +260,12 @@ function program1(depth0,data) {
   data.buffer.push("<div class=\"regist\">\r\n		");
   data.buffer.push(escapeExpression((helper = helpers['input-user'] || (depth0 && depth0['input-user']),options={hash:{
     'username': ("username"),
+    'password': ("password"),
     'param': ("regist"),
     'action': ("regist"),
-    'btnText': ("注册")
-  },hashTypes:{'username': "ID",'param': "STRING",'action': "STRING",'btnText': "STRING"},hashContexts:{'username': depth0,'param': depth0,'action': depth0,'btnText': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input-user", options))));
+    'btnText': ("注册"),
+    'btnClass': ("btn-gray")
+  },hashTypes:{'username': "ID",'password': "ID",'param': "STRING",'action': "STRING",'btnText': "STRING",'btnClass': "STRING"},hashContexts:{'username': depth0,'password': depth0,'param': depth0,'action': depth0,'btnText': depth0,'btnClass': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input-user", options))));
   data.buffer.push("\r\n		");
   stack1 = (helper = helpers['link-to'] || (depth0 && depth0['link-to']),options={hash:{
     'class': ("reg-tip")

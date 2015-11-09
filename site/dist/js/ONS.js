@@ -1,25 +1,29 @@
 var App = Ember.Application.create();
 App.InputUserComponent = Ember.Component.extend({
-	islook:false,
-	actions:{
-		lookpwd:function(){
-			this.set("islook",!this.get('islook'));
+	islook: false,
+	classname: function() {
+		return 'btn btn-big mt20 '+this.get('btnClass')
+	}.property("btnClass"),
+	actions: {
+		lookpwd: function() {
+			//this.set("islook", !this.get('islook'));
+			this.toggleProperty('islook');
 		},
-		click:function(){
-			this.sendAction('action',this.get('username'),this.get('password'))
+		click: function() {
+			this.sendAction('action', this.get('username'), this.get('password'))
 		}
 	}
 });
 App.LoginController = Ember.Controller.extend({
-	password:'',
-	username:'',
+	password: '',
+	username: '',
 	actions: {
 		login: function() {
 			console.log(arguments)
 			var _this = this;
-			var uname = this.get('username')||'';
-			var pwd = this.get('password')||'';
-			if (!(/^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/.test(uname) || /^1[3|5|7|8|][0-9]{9}$/.test(uname))){
+			var uname = this.get('username') || '';
+			var pwd = this.get('password') || '';
+			if (!(/^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/.test(uname) || /^1[3|5|7|8|][0-9]{9}$/.test(uname))) {
 				alert('用户名必须为手机号或邮箱.');
 				return false;
 			}
@@ -30,7 +34,7 @@ App.LoginController = Ember.Controller.extend({
 			App.User.login(uname, pwd).done(function(data) {
 				LocalStorageCache.add('userinfo', data);
 				LocalStorageCache.add('username', uname);
-				LocalStorageCache.add('token', data.token, 1111110);
+				LocalStorageCache.add('token', data.token);
 				if (!data.sex || !data.area) {
 					alert('请先完善资料！');
 					_this.transitionToRoute('info');
@@ -40,8 +44,8 @@ App.LoginController = Ember.Controller.extend({
 	}
 });
 App.RegistController = Ember.Controller.extend({
-	actions:{
-		regist:function(username,password){
+	actions: {
+		regist: function(username, password) {
 			log(arguments)
 		}
 	}
@@ -61,6 +65,20 @@ App.ChangepwdController = Ember.Controller.extend({
 		}
 	}
 });
+
+App.IndexController = Ember.Controller.extend({
+	classname: '',
+	actions: {
+		toggleMenu: function() {
+			var cls = this.get('classname');
+			if (!cls) {
+				this.set('classname', 'hide');
+			} else {
+				this.set('classname', '');
+			}
+		}
+	}
+})
 App.Model = Ember.Object.extend();
 App.Model.reopenClass({
 	find: function(id, type) {
@@ -138,7 +156,7 @@ App.User.reopenClass({
 		});
 	},
 	logout:function(){
-		//LocalStorageCache.remove('token');
+		LocalStorageCache.clear();
 	},
 	changepwd:function(user){
 		return ajax({
@@ -210,11 +228,7 @@ Ember.Router.map(function() {
 		});
 		this.resource('logout');
 		this.resource('changepwd');
-	});
-	this.resource('test', {
-		path: 'test'
-	}, function() {
-		this.resource('das');
+		this.resource('write');
 	});
 	this.route('login', {
 		path: 'login'
@@ -273,15 +287,15 @@ App.ListRoute = Ember.Route.extend({
 App.DynamicRoute = Ember.Route.extend({
 	model: function() {
 		console.log('dynamic');
-		return {
+		return [{
 			test: 2222
-		}
+		}]
 	},
 	renderTemplate: function(controller, model) {
 		this.render('list', {
-			model: {
+			model: [{
 				test: 2222222
-			}
+			}]
 		});
 	}
 });

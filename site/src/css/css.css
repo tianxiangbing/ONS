@@ -187,6 +187,9 @@ a {
 .pl30 {
   padding-left: 30px; }
 
+.hide {
+  display: none; }
+
 body {
   font-size: 13px;
   color: #333;
@@ -201,7 +204,7 @@ body {
   box-sizing: border-box;
   display: block;
   width: 100%;
-  letter-spacing: 3px; }
+  letter-spacing: 2px; }
 
 .login, .regist {
   width: 7rem;
@@ -237,3 +240,37 @@ body {
   margin-top: 30px;
   text-align: center;
   display: block; }
+
+.menu {
+  position: fixed;
+  bottom: .1rem;
+  width: 100%;
+  text-align: center; }
+  .menu .menu-container {
+    position: relative;
+    width: 0.8rem;
+    height: 0.8rem;
+    display: block;
+    margin: 0 auto; }
+  .menu a {
+    font-size: 0.8rem; }
+    .menu a.menu-child {
+      position: absolute;
+      display: block;
+      font-size: 0.6rem; }
+    .menu a.members {
+      top: -0.16rem;
+      left: -1.92rem; }
+      .menu a.members.actived {
+        color: #08B62C; }
+    .menu a.user-center {
+      top: -0.16rem;
+      right: -1.92rem; }
+      .menu a.user-center.actived {
+        color: #08B62C; }
+    .menu a.home {
+      top: -1.04rem;
+      right: -0.8rem; }
+    .menu a.write {
+      top: -1.04rem;
+      left: -0.8rem; }

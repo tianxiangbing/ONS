@@ -11,7 +11,9 @@ module.exports = function(grunt) {
 		emberTemplates: config('emberTemplates'),
 		cssmin: config('cssmin'),
 		sass: config('sass'),
-		connect:config('connect')
+		connect: config('connect'),
+		uglify: config('uglify'),
+		clean: config('clean')
 	}
 	console.log("=====================")
 		//console.log(cfg)
@@ -23,5 +25,11 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-connect');
-	grunt.registerTask('default', ['connect','watch']);
+	grunt.loadNpmTasks('grunt-contrib-clean');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.registerTask('default', ['connect', 'watch']);
+	//build js
+	grunt.registerTask("js", ['clean', 'emberTemplates:compile', 'uglify','clean']);
+	//build
+	grunt.registerTask('build', ['js']);
 };

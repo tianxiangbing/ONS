@@ -31,11 +31,13 @@
 .icon-message:before { content: "\e60d"; }
 .icon-lock:before { content: "\e60e"; }
 .icon-friendaddfill:before { content: "\e60f"; }
+.icon-write:before { content: "\e622"; }
 .icon-appreciatefill:before { content: "\e610"; }
 .icon-search:before { content: "\e61a"; }
 .icon-female:before { content: "\e611"; }
 .icon-male:before { content: "\e612"; }
 .icon-cameraaddfill:before { content: "\e613"; }
+.icon-deji:before { content: "\e61f"; }
 .icon-mark:before { content: "\e614"; }
 .icon-personal:before { content: "\e61b"; }
 .icon-set:before { content: "\e61c"; }
@@ -44,4 +46,7 @@
 .icon-attention:before { content: "\e617"; }
 .icon-add:before { content: "\e618"; }
 .icon-move:before { content: "\e619"; }
+.icon-menu:before { content: "\e620"; }
+.icon-menu1:before { content: "\e61e"; }
 .icon-user:before { content: "\e61d"; }
+.icon-conowmenupmo:before { content: "\e621"; }

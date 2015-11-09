@@ -11,11 +11,7 @@ Ember.Router.map(function() {
 		});
 		this.resource('logout');
 		this.resource('changepwd');
-	});
-	this.resource('test', {
-		path: 'test'
-	}, function() {
-		this.resource('das');
+		this.resource('write');
 	});
 	this.route('login', {
 		path: 'login'
@@ -74,15 +70,15 @@ App.ListRoute = Ember.Route.extend({
 App.DynamicRoute = Ember.Route.extend({
 	model: function() {
 		console.log('dynamic');
-		return {
+		return [{
 			test: 2222
-		}
+		}]
 	},
 	renderTemplate: function(controller, model) {
 		this.render('list', {
-			model: {
+			model: [{
 				test: 2222222
-			}
+			}]
 		});
 	}
 });

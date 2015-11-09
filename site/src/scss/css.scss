@@ -2,8 +2,6 @@
 @import "../lib/dialog/dialog.css";
 @import "iconfont.css";
 
-$fontSize: 13px;
-
 body {
     font-size: $fontSize;
     color: $color;
@@ -71,4 +69,49 @@ body {
     margin-top: 30px;
     text-align: center;
     display: block;
+}
+.menu {
+    position: fixed;
+    bottom: .1rem;
+    width:100%;
+    text-align: center;
+
+    .menu-container{
+        position:relative;
+        width:$menuFontSize;
+        height: $menuFontSize;
+        display: block;
+        margin:$center;
+    }
+
+    a {
+        font-size:$menuFontSize;
+        &.menu-child{
+            position:absolute;
+            display: block;
+            font-size: $menuChildFontSize;
+        }
+        &.members{
+            top:-.2*$menuFontSize;
+            left:-2.4*$menuFontSize;
+            &.actived{
+                color:$menuActivedColor;
+            }
+        }
+        &.user-center{
+            top:-.2*$menuFontSize;
+            right:-2.4*$menuFontSize;
+            &.actived{
+                color:$menuActivedColor;
+            }
+        }
+        &.home{
+            top:-1.3*$menuFontSize;
+            right:-$menuFontSize;
+        }
+        &.write{
+            top:-1.3*$menuFontSize;
+            left:-$menuFontSize;
+        }
+    }
 }

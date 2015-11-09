@@ -75,7 +75,7 @@ App.User.reopenClass({
 		});
 	},
 	logout:function(){
-		//LocalStorageCache.remove('token');
+		LocalStorageCache.clear();
 	},
 	changepwd:function(user){
 		return ajax({
