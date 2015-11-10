@@ -1,10 +1,13 @@
 html,body,ul,li,input{padding:0;margin:0;list-style: none;outline: none;resize:none;}
+$backgroundColor:#f2f2f2;
 $fontSize:12px !default;
 $btnFontSize:14px !default;
 .f12{font-size:$fontSize;}
 $linkColor: #59AAE1 #59AAE1 !default;
 $fontFamily: "Microsoft YaHei";
 $color:#333 !default;
+$toolBackColor:#fff !default;
+$grayColor:#999;
 a{
   color:nth($linkColor,1);
   text-decoration: none;
@@ -51,7 +54,7 @@ $px:5 10 15 20 25 30;
 		}
 	}
 }
-$fontColor:#e5e5e5;
+$fontColor:#333 !default;
 .hide{
 	display:none;
 }

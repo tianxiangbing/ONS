@@ -1,4 +1,18 @@
+/*
+ * Created with Sublime Text 2.
+ * User: 田想兵
+ * Date: 2015-11-10
+ * Time: 16:51:35
+ * Contact: 55342775@qq.com  http://www.lovewebgames.com/
+ */
 var App = Ember.Application.create();
+/*
+ * Created with Sublime Text 2.
+ * User: 田想兵
+ * Date: 2015-11-10
+ * Time: 16:51:59
+ * Contact: 55342775@qq.com  http://www.lovewebgames.com/
+ */
 App.InputUserComponent = Ember.Component.extend({
 	islook: false,
 	isReadOnly: function() {
@@ -17,6 +31,13 @@ App.InputUserComponent = Ember.Component.extend({
 		}
 	}
 });
+/*
+ * Created with Sublime Text 2.
+ * User: 田想兵
+ * Date: 2015-11-10
+ * Time: 16:51:07
+ * Contact: 55342775@qq.com  http://www.lovewebgames.com/
+ */
 App.LoginController = Ember.Controller.extend({
 	password: '',
 	username: '',
@@ -41,6 +62,8 @@ App.LoginController = Ember.Controller.extend({
 				if (!data.sex || !data.area) {
 					alert('请先完善资料！');
 					_this.transitionToRoute('info');
+				}else{
+					_this.transitionToRoute('index');
 				}
 			})
 		}
@@ -81,6 +104,13 @@ App.IndexController = Ember.Controller.extend({
 		}
 	}
 })
+/*
+ * Created with Sublime Text 2.
+ * User: 田想兵
+ * Date: 2015-11-10
+ * Time: 16:51:49
+ * Contact: 55342775@qq.com  http://www.lovewebgames.com/
+ */
 App.Model = Ember.Object.extend();
 App.Model.reopenClass({
 	find: function(id, type) {
@@ -169,6 +199,13 @@ App.User.reopenClass({
 });
 
 var UserInfo={};
+/*
+ * Created with Sublime Text 2.
+ * User: 田想兵
+ * Date: 2015-11-10
+ * Time: 16:51:53
+ * Contact: 55342775@qq.com  http://www.lovewebgames.com/
+ */
 function ajax(param) {
 	var dtd = $.Deferred();
 	Ember.$.ajax({
@@ -217,6 +254,13 @@ Ember.Handlebars.helper('equal', function(v1, v2, options) {
 		return options.inverse(this);
 	}
 });
+/*
+ * Created with Sublime Text 2.
+ * User: 田想兵
+ * Date: 2015-11-10
+ * Time: 16:51:56
+ * Contact: 55342775@qq.com  http://www.lovewebgames.com/
+ */
 Ember.Router.map(function() {
 	this.resource('index', {
 		path: "/"
@@ -231,6 +275,7 @@ Ember.Router.map(function() {
 		this.resource('logout');
 		this.resource('changepwd');
 		this.resource('write');
+		this.resource('friend');
 	});
 	this.route('login', {
 		path: 'login'
@@ -252,7 +297,7 @@ App.IndexRoute = Ember.Route.extend({
 		console.log(1)
 	},
 	deactivate: function() {
-		App.User.logout();
+		//
 	}
 });
 App.LoginRoute = Ember.Route.extend({
@@ -272,6 +317,7 @@ App.InfoRoute = Ember.Route.extend({
 });
 App.LogoutRoute = Ember.Route.extend({
 	redirect: function() {
+		App.User.logout();
 		this.transitionTo('login');
 	}
 });

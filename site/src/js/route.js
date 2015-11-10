@@ -1,3 +1,10 @@
+/*
+ * Created with Sublime Text 2.
+ * User: 田想兵
+ * Date: 2015-11-10
+ * Time: 16:51:56
+ * Contact: 55342775@qq.com  http://www.lovewebgames.com/
+ */
 Ember.Router.map(function() {
 	this.resource('index', {
 		path: "/"
@@ -12,6 +19,7 @@ Ember.Router.map(function() {
 		this.resource('logout');
 		this.resource('changepwd');
 		this.resource('write');
+		this.resource('friend');
 	});
 	this.route('login', {
 		path: 'login'
@@ -33,7 +41,7 @@ App.IndexRoute = Ember.Route.extend({
 		console.log(1)
 	},
 	deactivate: function() {
-		App.User.logout();
+		//
 	}
 });
 App.LoginRoute = Ember.Route.extend({
@@ -53,6 +61,7 @@ App.InfoRoute = Ember.Route.extend({
 });
 App.LogoutRoute = Ember.Route.extend({
 	redirect: function() {
+		App.User.logout();
 		this.transitionTo('login');
 	}
 });

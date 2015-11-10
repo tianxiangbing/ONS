@@ -6,6 +6,7 @@ body {
     font-size: $fontSize;
     color: $color;
     font-family: $fontFamily;
+    background-color:$backgroundColor;
 }
 
 .txt-input {
@@ -19,6 +20,7 @@ body {
     width: $inputWidth;
     letter-spacing: 2px;
     font-weight:500;
+    background-color:transparent;
 }
 .txt-input[readonly]{
     border:none;
@@ -57,6 +59,9 @@ body {
         .pwd-look.active {
             color: #333333;
         }
+    }
+    &.changepwd{
+        bottom:40%;
     }
 }
 
@@ -97,16 +102,13 @@ body {
         &.members{
             top:-.2*$menuFontSize;
             left:-2.4*$menuFontSize;
-            &.actived{
-                color:$menuActivedColor;
-            }
         }
         &.user-center{
             top:-.2*$menuFontSize;
             right:-2.4*$menuFontSize;
-            &.actived{
-                color:$menuActivedColor;
-            }
+        }
+        &.actived{
+            color:$menuActivedColor;
         }
         &.home{
             top:-1.3*$menuFontSize;
@@ -118,3 +120,5 @@ body {
         }
     }
 }
+@import "user-center";
+@import "member";

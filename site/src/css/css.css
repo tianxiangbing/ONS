@@ -7,7 +7,7 @@ html, body, ul, li, input {
   outline: none;
   resize: none; }
 
-.f12 {
+.f12, .user-info .username {
   font-size: 12px; }
 
 a {
@@ -16,13 +16,13 @@ a {
   a:hover {
     color: #59AAE1; }
 
-.f12 {
+.f12, .user-info .username {
   font-size: 12px; }
 
 .f13 {
   font-size: 13px; }
 
-.f14 {
+.f14, .user-info .nickname, .toolbar {
   font-size: 14px; }
 
 .f16 {
@@ -100,7 +100,7 @@ a {
 .ml5 {
   margin-left: 5px; }
 
-.ml10 {
+.ml10, .user-info .user-desc {
   margin-left: 10px; }
 
 .ml15 {
@@ -193,7 +193,8 @@ a {
 body {
   font-size: 13px;
   color: #333;
-  font-family: "Microsoft YaHei"; }
+  font-family: "Microsoft YaHei";
+  background-color: #f2f2f2; }
 
 .txt-input {
   border: none;
@@ -205,7 +206,8 @@ body {
   display: block;
   width: 100%;
   letter-spacing: 2px;
-  font-weight: 500; }
+  font-weight: 500;
+  background-color: transparent; }
 
 .txt-input[readonly] {
   border: none; }
@@ -220,7 +222,7 @@ body {
   .login .input-uname, .login .input-pwd, .regist .input-uname, .regist .input-pwd {
     position: relative; }
     .login .input-uname .iconfont, .login .input-pwd .iconfont, .regist .input-uname .iconfont, .regist .input-pwd .iconfont {
-      color: #e5e5e5;
+      color: #333;
       position: absolute;
       bottom: 8px;
       left: 5px; }
@@ -233,6 +235,8 @@ body {
       text-align: right; }
     .login .input-uname .pwd-look.active, .login .input-pwd .pwd-look.active, .regist .input-uname .pwd-look.active, .regist .input-pwd .pwd-look.active {
       color: #333333; }
+  .login.changepwd, .regist.changepwd {
+    bottom: 40%; }
 
 .btn-green {
   background-color: #1DAF4D; }
@@ -265,16 +269,54 @@ body {
     .menu a.members {
       top: -0.16rem;
       left: -1.92rem; }
-      .menu a.members.actived {
-        color: #08B62C; }
     .menu a.user-center {
       top: -0.16rem;
       right: -1.92rem; }
-      .menu a.user-center.actived {
-        color: #08B62C; }
+    .menu a.actived {
+      color: #08B62C; }
     .menu a.home {
       top: -1.04rem;
       right: -0.8rem; }
     .menu a.write {
       top: -1.04rem;
       left: -0.8rem; }
+
+.user-info {
+  position: relative;
+  line-height: 1rem;
+  overflow: hidden; }
+  .user-info img {
+    width: 1rem;
+    height: 1rem;
+    float: left; }
+  .user-info .user-desc {
+    display: inline-block;
+    line-height: 20px; }
+  .user-info .username {
+    color: #b3b3b3; }
+  .user-info .go {
+    top: .5rem !important; }
+
+.toolbar {
+  color: #333;
+  display: block;
+  background-color: #fff;
+  padding: 0.1rem;
+  margin-top: .3rem;
+  line-height: 1;
+  position: relative; }
+  .toolbar.p2 {
+    padding: 0.2rem; }
+  .toolbar .go {
+    position: absolute;
+    right: .1rem;
+    top: .2rem;
+    color: #999; }
+
+.mem-list .item .head .avatar {
+  border-radius: 1rem;
+  width: 1rem;
+  overflow: hidden; }
+  .mem-list .item .head .avatar img {
+    width: 1rem;
+    height: 1rem; }

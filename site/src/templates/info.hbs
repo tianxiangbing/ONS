@@ -1,5 +1,11 @@
-info
-{{username}}
-
-{{#link-to "changepwd"}}修改密码{{/link-to}}
-{{#link-to "logout"}}退出{{/link-to}}
+<div class="user-info toolbar"><img {{bind-attr src=avatar}}>
+	<div class="user-desc">
+		<div class="nickname">{{nickname}}</div>
+		<div class="username">{{username}}</div>
+	</div>
+	<div class="go iconfont">&#xe608;</div>
+</div>
+	{{#link-to "changepwd"  class="toolbar p2"}}<i class="iconfont f16 mr10">&#xe60e;</i>修改密码
+	<div class="go iconfont">&#xe608;</div>{{/link-to}}
+	{{#link-to "logout"  class="toolbar p2"}}<i class="iconfont f16 mr10">&#xe624;</i>退出
+	<div class="go iconfont">&#xe608;</div>{{/link-to}}

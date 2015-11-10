@@ -1,3 +1,10 @@
+/*
+ * Created with Sublime Text 2.
+ * User: 田想兵
+ * Date: 2015-11-10
+ * Time: 16:51:07
+ * Contact: 55342775@qq.com  http://www.lovewebgames.com/
+ */
 App.LoginController = Ember.Controller.extend({
 	password: '',
 	username: '',
@@ -22,6 +29,8 @@ App.LoginController = Ember.Controller.extend({
 				if (!data.sex || !data.area) {
 					alert('请先完善资料！');
 					_this.transitionToRoute('info');
+				}else{
+					_this.transitionToRoute('index');
 				}
 			})
 		}

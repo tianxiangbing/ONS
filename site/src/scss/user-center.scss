@@ -1,0 +1,54 @@
+.user-info {
+    position: relative;
+    img {
+        width: 1rem;
+        height: 1rem;
+        float: left;
+    }
+
+    line-height: 1rem;
+
+    .user-desc {
+        display: inline-block;
+
+        @extend .ml10;
+
+        line-height: 20px;
+    }
+
+    .nickname {
+        @extend .f14;
+    }
+
+    .username {
+        @extend .f12;
+
+        color: darken(#ccc, 10%);
+    }
+
+    .go {
+        top: .5rem !important;
+    }
+    overflow: hidden;
+
+}
+$toolbarPadding:.1rem;
+.toolbar {
+	color:$fontColor;
+    	display: block;
+    background-color: $toolBackColor;
+    padding: $toolbarPadding;
+    margin-top: .3rem;
+    line-height: 1;
+    @extend .f14;
+    position:relative;
+    &.p2{
+    	padding:$toolbarPadding*2;
+    }
+    .go {
+        position: absolute;
+        right: .1rem;
+        top: .2rem;
+        color:$grayColor;
+    }
+}

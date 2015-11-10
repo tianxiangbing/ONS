@@ -1,3 +1,10 @@
+/*
+ * Created with Sublime Text 2.
+ * User: 田想兵
+ * Date: 2015-11-10
+ * Time: 16:51:53
+ * Contact: 55342775@qq.com  http://www.lovewebgames.com/
+ */
 function ajax(param) {
 	var dtd = $.Deferred();
 	Ember.$.ajax({

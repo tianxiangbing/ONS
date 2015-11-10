@@ -1,0 +1,23 @@
+<div class="mem-list">
+	{{#each item in data}}
+	<div class="item">
+		<div class="head">
+			<div class="avatar">
+				<img  {{bind-attr src=item.avatar}}>
+			</div>
+			<div class="mem-desc">
+				<div class="nickname">{{item.nickname}}</div>
+				<div class="time">{{item.publish.date}}</div>
+			</div>
+			<div class="pub-content">
+				<div class="pub-img">
+					<img {{bind-attr src=item.publish.img}}>
+				</div>
+				<div class="pub-desc">
+					{{item.publish.desc}}
+				</div>
+			</div>
+		</div>
+	</div>
+	{{/each}}
+</div>

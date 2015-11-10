@@ -1,0 +1,7 @@
+.mem-list .item .head .avatar {
+  border-radius: 1rem;
+  width: 1rem;
+  overflow: hidden; }
+  .mem-list .item .head .avatar img {
+    width: 1rem;
+    height: 1rem; }
