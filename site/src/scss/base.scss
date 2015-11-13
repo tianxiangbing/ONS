@@ -8,6 +8,7 @@ $fontFamily: "Microsoft YaHei";
 $color:#333 !default;
 $toolBackColor:#fff !default;
 $grayColor:#999;
+$screenWidth:7.5rem;
 a{
   color:nth($linkColor,1);
   text-decoration: none;
@@ -54,11 +55,12 @@ $px:5 10 15 20 25 30;
 		}
 	}
 }
-$fontColor:#333 !default;
 .hide{
 	display:none;
 }
 
+$toolbarPadding:0.1rem;
+$fontColor:#333 !default;
 $fontSize: 13px;
 $menuFontSize:0.8rem;
 $menuChildFontSize:0.6rem;

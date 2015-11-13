@@ -122,20 +122,23 @@ function program1(depth0,data) {
   data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
     'src': ("item.avatar")
   },hashTypes:{'src': "ID"},hashContexts:{'src': depth0},contexts:[],types:[],data:data})));
-  data.buffer.push(">\r\n			</div>\r\n			<div class=\"mem-desc\">\r\n				<div class=\"nickname\">");
+  data.buffer.push(">\r\n			</div>\r\n			<div class=\"mem-desc\">\r\n				<div class=\"nickname\">\r\n				");
   stack1 = helpers._triageMustache.call(depth0, "item.nickname", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("</div>\r\n				<div class=\"time\">");
+  data.buffer.push("\r\n				</div>\r\n				<div class=\"time\">");
   stack1 = helpers._triageMustache.call(depth0, "item.publish.date", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("</div>\r\n			</div>\r\n			<div class=\"pub-content\">\r\n				<div class=\"pub-img\">\r\n					<img ");
+  data.buffer.push("</div>\r\n			</div>\r\n		</div>\r\n		<div class=\"pub-content\">\r\n			<div class=\"pub-img\">\r\n				<img ");
   data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
     'src': ("item.publish.img")
   },hashTypes:{'src': "ID"},hashContexts:{'src': depth0},contexts:[],types:[],data:data})));
-  data.buffer.push(">\r\n				</div>\r\n				<div class=\"pub-desc\">\r\n					");
+  data.buffer.push(">\r\n			</div>\r\n			<div class=\"pub-desc\">\r\n				");
   stack1 = helpers._triageMustache.call(depth0, "item.publish.desc", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\r\n				</div>\r\n			</div>\r\n		</div>\r\n	</div>\r\n	");
+  data.buffer.push("\r\n			</div>\r\n			<div class=\"pub-praises\">\r\n				");
+  stack1 = helpers._triageMustache.call(depth0, "item.publish.praises", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push(" 个赞\r\n			</div>\r\n		</div>\r\n	</div>\r\n	");
   return buffer;
   }
 
@@ -143,6 +146,41 @@ function program1(depth0,data) {
   stack1 = helpers.each.call(depth0, "item", "in", "data", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0,depth0,depth0],types:["ID","ID","ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\r\n</div>");
+  return buffer;
+  
+});
+
+Ember.TEMPLATES["edit"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data
+/**/) {
+this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
+  var buffer = '', stack1, helper, options, escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing;
+
+
+  data.buffer.push("<div class=\"edit\">\r\n	<div class=\"row\">\r\n		<div class=\"label\">头像</div>\r\n		<div class=\"edit-info\" id=\"editAvatar\">\r\n			<img ");
+  data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
+    'src': ("avatar")
+  },hashTypes:{'src': "ID"},hashContexts:{'src': depth0},contexts:[],types:[],data:data})));
+  data.buffer.push(">\r\n		</div>\r\n	</div>\r\n	<div class=\"row\">\r\n		<div class=\"label\">昵称</div>\r\n		<div class=\"edit-info\">\r\n		");
+  data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
+    'value': ("nickname")
+  },hashTypes:{'value': "ID"},hashContexts:{'value': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
+  data.buffer.push("\r\n		</div>\r\n	</div>\r\n	<div class=\"row\">\r\n		<div class=\"label\">账号</div>\r\n		<div class=\"edit-info\">\r\n			");
+  stack1 = helpers._triageMustache.call(depth0, "username", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\r\n		</div>\r\n	</div>\r\n</div>\r\n<div class=\"edit\">\r\n	<div class=\"row\">\r\n		<div class=\"label\">性别</div>\r\n		<div class=\"edit-info\">\r\n			");
+  stack1 = helpers._triageMustache.call(depth0, "sex", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\r\n		</div>\r\n	</div>\r\n	<div class=\"row\">\r\n		<div class=\"label\">地区</div>\r\n		<div class=\"edit-info\">\r\n		<input type=\"text\" id=\"txt_area\" ");
+  data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
+    'value': ("area"),
+    'data-value': ("areaid")
+  },hashTypes:{'value': "STRING",'data-value': "ID"},hashContexts:{'value': depth0,'data-value': depth0},contexts:[],types:[],data:data})));
+  data.buffer.push(" >\r\n		</div>\r\n	</div>\r\n	<div class=\"row\">\r\n		<div class=\"label\">个性签名</div>\r\n		<div class=\"edit-info\">\r\n			");
+  data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
+    'value': ("autograph")
+  },hashTypes:{'value': "ID"},hashContexts:{'value': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
+  data.buffer.push("\r\n		</div>\r\n	</div>\r\n</div>");
   return buffer;
   
 });
@@ -235,17 +273,8 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
 
 function program1(depth0,data) {
   
-  
-  data.buffer.push("<i class=\"iconfont f16 mr10\">&#xe60e;</i>修改密码\r\n	<div class=\"go iconfont\">&#xe608;</div>");
-  }
-
-function program3(depth0,data) {
-  
-  
-  data.buffer.push("<i class=\"iconfont f16 mr10\">&#xe624;</i>退出\r\n	<div class=\"go iconfont\">&#xe608;</div>");
-  }
-
-  data.buffer.push("<div class=\"user-info toolbar\"><img ");
+  var buffer = '', stack1;
+  data.buffer.push("\r\n<img ");
   data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
     'src': ("avatar")
   },hashTypes:{'src': "ID"},hashContexts:{'src': depth0},contexts:[],types:[],data:data})));
@@ -255,15 +284,35 @@ function program3(depth0,data) {
   data.buffer.push("</div>\r\n		<div class=\"username\">");
   stack1 = helpers._triageMustache.call(depth0, "username", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("</div>\r\n	</div>\r\n	<div class=\"go iconfont\">&#xe608;</div>\r\n</div>\r\n	");
+  data.buffer.push("</div>\r\n	</div>\r\n	<div class=\"go iconfont\">&#xe608;</div>\r\n");
+  return buffer;
+  }
+
+function program3(depth0,data) {
+  
+  
+  data.buffer.push("<i class=\"iconfont f16 mr10\">&#xe60e;</i>修改密码\r\n	<div class=\"go iconfont\">&#xe608;</div>");
+  }
+
+function program5(depth0,data) {
+  
+  
+  data.buffer.push("<i class=\"iconfont f16 mr10\">&#xe624;</i>退出\r\n	<div class=\"go iconfont\">&#xe608;</div>");
+  }
+
   stack1 = (helper = helpers['link-to'] || (depth0 && depth0['link-to']),options={hash:{
-    'class': ("toolbar p2")
-  },hashTypes:{'class': "STRING"},hashContexts:{'class': depth0},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "changepwd", options) : helperMissing.call(depth0, "link-to", "changepwd", options));
+    'class': ("user-info toolbar")
+  },hashTypes:{'class': "STRING"},hashContexts:{'class': depth0},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "edit", options) : helperMissing.call(depth0, "link-to", "edit", options));
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\r\n	");
   stack1 = (helper = helpers['link-to'] || (depth0 && depth0['link-to']),options={hash:{
     'class': ("toolbar p2")
-  },hashTypes:{'class': "STRING"},hashContexts:{'class': depth0},inverse:self.noop,fn:self.program(3, program3, data),contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "logout", options) : helperMissing.call(depth0, "link-to", "logout", options));
+  },hashTypes:{'class': "STRING"},hashContexts:{'class': depth0},inverse:self.noop,fn:self.program(3, program3, data),contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "changepwd", options) : helperMissing.call(depth0, "link-to", "changepwd", options));
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\r\n	");
+  stack1 = (helper = helpers['link-to'] || (depth0 && depth0['link-to']),options={hash:{
+    'class': ("toolbar p2")
+  },hashTypes:{'class': "STRING"},hashContexts:{'class': depth0},inverse:self.noop,fn:self.program(5, program5, data),contexts:[depth0],types:["STRING"],data:data},helper ? helper.call(depth0, "logout", options) : helperMissing.call(depth0, "link-to", "logout", options));
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\r\n");
   return buffer;

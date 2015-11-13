@@ -30,6 +30,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('default', ['connect', 'watch']);
 	//build js
 	grunt.registerTask("js", ['clean', 'emberTemplates:compile', 'uglify','clean']);
+	grunt.registerTask("css", [ 'sass', 'cssmin']);
 	//build
 	grunt.registerTask('build', ['js']);
 };

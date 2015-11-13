@@ -13,13 +13,14 @@ Ember.Router.map(function() {
 		this.resource('list', {
 			path: "list"
 		}, function() {
-			this.resource('follow');
-			this.resource('dynamic');
+			//this.resource('follow');
+			//this.resource('dynamic');
 		});
 		this.resource('logout');
 		this.resource('changepwd');
 		this.resource('write');
 		this.resource('friend');
+		this.resource('edit');
 	});
 	this.route('login', {
 		path: 'login'
@@ -59,6 +60,11 @@ App.InfoRoute = Ember.Route.extend({
 		return LocalStorageCache.get('userinfo');
 	}
 });
+App.EditRoute = Ember.Route.extend({
+	model:function(){
+		return LocalStorageCache.get('userinfo');
+	}
+});
 App.LogoutRoute = Ember.Route.extend({
 	redirect: function() {
 		App.User.logout();
@@ -79,20 +85,5 @@ App.ChangepwdRoute = Ember.Route.extend({
 App.ListRoute = Ember.Route.extend({
 	model: function() {
 		return  App.User.findAll();
-	}
-});
-App.DynamicRoute = Ember.Route.extend({
-	model: function() {
-		console.log('dynamic');
-		return [{
-			test: 2222
-		}]
-	},
-	renderTemplate: function(controller, model) {
-		this.render('list', {
-			model: [{
-				test: 2222222
-			}]
-		});
 	}
 });

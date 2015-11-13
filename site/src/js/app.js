@@ -6,3 +6,6 @@
  * Contact: 55342775@qq.com  http://www.lovewebgames.com/
  */
 var App = Ember.Application.create();
+$(function() {
+  FastClick.attach(document.body);
+});

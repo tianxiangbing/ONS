@@ -4,7 +4,7 @@ module.exports = {
       // includes files within path and its sub-directories
       {
         expand: true,
-        src: ['**'],
+        src: ['**/*'],
         cwd:'site/src/lib',
         dest: 'site/dist/lib',
         filter: 'isFile'

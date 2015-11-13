@@ -32,7 +32,7 @@ App.LoginController = Ember.Controller.extend({
 				}else{
 					_this.transitionToRoute('index');
 				}
-			})
+			});
 		}
 	}
 });
@@ -70,4 +70,4 @@ App.IndexController = Ember.Controller.extend({
 			}
 		}
 	}
-})
+});

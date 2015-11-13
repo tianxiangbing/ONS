@@ -1,5 +1,6 @@
 @import "base";
 @import "../lib/dialog/dialog.css";
+@import "../lib/mobile-select-area/mobile-select-area.css";
 @import "iconfont.css";
 
 body {
@@ -90,6 +91,7 @@ body {
         height: $menuFontSize;
         display: block;
         margin:$center;
+        a{color:$fontColor;}
     }
 
     a {

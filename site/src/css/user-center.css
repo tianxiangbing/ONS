@@ -1,21 +1,21 @@
 /*
 Error: Undefined variable: "$fontColor".
-        on line 37 of site/src/scss/user-center.scss
+        on line 38 of site/src/scss/user-center.scss
 
-32:     overflow: hidden;
 33: 
-34: }
-35: $toolbarPadding:.1rem;
-36: .toolbar {
-37: 	color:$fontColor;
-38:     	display: block;
-39:     background-color: $toolBackColor;
-40:     padding: $toolbarPadding;
-41:     margin-top: .3rem;
-42:     line-height: 1;
+34:     overflow: hidden;
+35: }
+36: 
+37: .toolbar {
+38:     color: $fontColor;
+39:     display: block;
+40:     background-color: $toolBackColor;
+41:     padding: $toolbarPadding;
+42:     margin-top: .3rem;
+43:     line-height: 1;
 
 Backtrace:
-site/src/scss/user-center.scss:37
+site/src/scss/user-center.scss:38
 C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/sass-3.4.18/lib/sass/script/tree/variable.rb:49:in `_perform'
 C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/sass-3.4.18/lib/sass/script/tree/node.rb:50:in `perform'
 C:/Ruby22-x64/lib/ruby/gems/2.2.0/gems/sass-3.4.18/lib/sass/tree/visitors/perform.rb:395:in `visit_prop'
@@ -61,4 +61,4 @@ C:/Ruby22-x64/bin/sass:23:in `<main>'
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$fontColor\".\A         on line 37 of site/src/scss/user-center.scss\A \A 32:     overflow: hidden;\A 33: \A 34: }\A 35: $toolbarPadding:.1rem;\A 36: .toolbar {\A 37: 	color:$fontColor;\A 38:     	display: block;\A 39:     background-color: $toolBackColor;\A 40:     padding: $toolbarPadding;\A 41:     margin-top: .3rem;\A 42:     line-height: 1;"; }
+  content: "Error: Undefined variable: \"$fontColor\".\A         on line 38 of site/src/scss/user-center.scss\A \A 33: \A 34:     overflow: hidden;\A 35: }\A 36: \A 37: .toolbar {\A 38:     color: $fontColor;\A 39:     display: block;\A 40:     background-color: $toolBackColor;\A 41:     padding: $toolbarPadding;\A 42:     margin-top: .3rem;\A 43:     line-height: 1;"; }

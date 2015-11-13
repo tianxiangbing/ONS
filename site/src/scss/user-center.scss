@@ -1,5 +1,6 @@
 .user-info {
     position: relative;
+
     img {
         width: 1rem;
         height: 1rem;
@@ -29,26 +30,83 @@
     .go {
         top: .5rem !important;
     }
-    overflow: hidden;
 
+    overflow: hidden;
 }
-$toolbarPadding:.1rem;
+
 .toolbar {
-	color:$fontColor;
-    	display: block;
+    color: $fontColor;
+    display: block;
     background-color: $toolBackColor;
     padding: $toolbarPadding;
     margin-top: .3rem;
     line-height: 1;
+
     @extend .f14;
-    position:relative;
-    &.p2{
-    	padding:$toolbarPadding*2;
+
+    position: relative;
+
+    &.p2 {
+        padding: $toolbarPadding * 2;
     }
+
     .go {
         position: absolute;
         right: .1rem;
         top: .2rem;
-        color:$grayColor;
+        color: $grayColor;
+    }
+}
+
+/*eidt*/
+.edit {
+    @extend .mt20;
+
+    background-color: $toolBackColor;
+    padding: $toolbarPadding;
+
+    .row {
+        border-bottom: 1px solid #e5e5e5;
+        overflow: hidden;
+        vertical-align: middle;
+        display: table;
+        width: $screenWidth - $toolbarPadding * 4;
+        line-height: $fontSize * 3;
+        padding: $toolbarPadding;
+
+        img {
+            width: 1rem;
+            height: 1rem;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .label {
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        %eidtColor {
+            color: lighten($fontColor, 30%);
+        }
+
+        .edit-info {
+            display: table-cell;
+            text-align: right;
+            float: right;
+
+            @extend %eidtColor;
+
+            input {
+                border: none;
+                text-align: right;
+
+                @extend %eidtColor;
+            }
+        }
+
+        &:last-child {
+            border: none !important;
+        }
     }
 }

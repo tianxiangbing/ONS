@@ -1,4 +1,5 @@
 @import url(../lib/dialog/dialog.css);
+@import url(../lib/mobile-select-area/mobile-select-area.css);
 @import url(iconfont.css);
 html, body, ul, li, input {
   padding: 0;
@@ -52,7 +53,7 @@ a {
 .mt15 {
   margin-top: 15px; }
 
-.mt20 {
+.mt20, .edit {
   margin-top: 20px; }
 
 .mt25 {
@@ -100,7 +101,7 @@ a {
 .ml5 {
   margin-left: 5px; }
 
-.ml10, .user-info .user-desc {
+.ml10, .user-info .user-desc, .mem-list .item .head .mem-desc {
   margin-left: 10px; }
 
 .ml15 {
@@ -260,6 +261,8 @@ body {
     height: 0.8rem;
     display: block;
     margin: 0 auto; }
+    .menu .menu-container a {
+      color: #333; }
   .menu a {
     font-size: 0.8rem; }
     .menu a.menu-child {
@@ -313,10 +316,60 @@ body {
     top: .2rem;
     color: #999; }
 
-.mem-list .item .head .avatar {
-  border-radius: 1rem;
-  width: 1rem;
-  overflow: hidden; }
-  .mem-list .item .head .avatar img {
-    width: 1rem;
-    height: 1rem; }
+/*eidt*/
+.edit {
+  background-color: #fff;
+  padding: 0.1rem; }
+  .edit .row {
+    border-bottom: 1px solid #e5e5e5;
+    overflow: hidden;
+    vertical-align: middle;
+    display: table;
+    width: 7.1rem;
+    line-height: 39px;
+    padding: 0.1rem; }
+    .edit .row img {
+      width: 1rem;
+      height: 1rem;
+      display: inline-block;
+      vertical-align: middle; }
+    .edit .row .label {
+      display: table-cell;
+      vertical-align: middle; }
+    .edit .row .edit-info, .edit .row .edit-info input {
+      color: gray; }
+    .edit .row .edit-info {
+      display: table-cell;
+      text-align: right;
+      float: right; }
+      .edit .row .edit-info input {
+        border: none;
+        text-align: right; }
+    .edit .row:last-child {
+      border: none !important; }
+
+.mem-list .item {
+  margin-bottom: 0.2rem;
+  background-color: #fff; }
+  .mem-list .item .head {
+    overflow: hidden;
+    padding: 0.1rem; }
+    .mem-list .item .head .avatar {
+      border-radius: 1rem;
+      width: 1rem;
+      overflow: hidden;
+      float: left; }
+      .mem-list .item .head .avatar img {
+        width: 1rem;
+        height: 1rem; }
+    .mem-list .item .head .mem-desc {
+      float: left; }
+  .mem-list .item .pub-img {
+    background-color: #f2f2f2;
+    text-align: center;
+    font-size: 0; }
+    .mem-list .item .pub-img img {
+      max-width: 7.5rem;
+      max-height: 7.5rem; }
+  .mem-list .item .pub-desc, .mem-list .item .pub-praises {
+    padding: 0.1rem; }

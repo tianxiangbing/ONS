@@ -1,12 +1,42 @@
-.mem-list{
-	.item{
-		.head{
-			.avatar{
-				border-radius: 1rem;
-				width:1rem;
-				overflow: hidden;
-				img{width:1rem;height:1rem;}
-			}
-		}
-	}
+.mem-list {
+    .item {
+        margin-bottom: $toolbarPadding*2;
+        background-color: $toolBackColor;
+
+        .head {
+            overflow: hidden;
+            padding: $toolbarPadding;
+
+            .avatar {
+                border-radius: 1rem;
+                width: 1rem;
+                overflow: hidden;
+				float:left;
+
+                img {
+                    width: 1rem;
+                    height: 1rem;
+                }
+            }
+            .mem-desc{
+            	float:left;
+            	@extend .ml10;
+            }
+        }
+
+        .pub-img {
+            background-color: $backgroundColor;
+            text-align: center;
+            font-size: 0;
+
+            img {
+                max-width: $screenWidth;
+                max-height: $screenWidth;
+            }
+        }
+
+        .pub-desc ,.pub-praises{
+            padding: $toolbarPadding;
+        }
+    }
 }

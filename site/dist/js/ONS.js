@@ -6,6 +6,9 @@
  * Contact: 55342775@qq.com  http://www.lovewebgames.com/
  */
 var App = Ember.Application.create();
+$(function() {
+  FastClick.attach(document.body);
+});
 /*
  * Created with Sublime Text 2.
  * User: 田想兵
@@ -65,7 +68,7 @@ App.LoginController = Ember.Controller.extend({
 				}else{
 					_this.transitionToRoute('index');
 				}
-			})
+			});
 		}
 	}
 });
@@ -103,7 +106,8 @@ App.IndexController = Ember.Controller.extend({
 			}
 		}
 	}
-})
+});
+
 /*
  * Created with Sublime Text 2.
  * User: 田想兵
@@ -269,13 +273,14 @@ Ember.Router.map(function() {
 		this.resource('list', {
 			path: "list"
 		}, function() {
-			this.resource('follow');
-			this.resource('dynamic');
+			//this.resource('follow');
+			//this.resource('dynamic');
 		});
 		this.resource('logout');
 		this.resource('changepwd');
 		this.resource('write');
 		this.resource('friend');
+		this.resource('edit');
 	});
 	this.route('login', {
 		path: 'login'
@@ -315,6 +320,11 @@ App.InfoRoute = Ember.Route.extend({
 		return LocalStorageCache.get('userinfo');
 	}
 });
+App.EditRoute = Ember.Route.extend({
+	model:function(){
+		return LocalStorageCache.get('userinfo');
+	}
+});
 App.LogoutRoute = Ember.Route.extend({
 	redirect: function() {
 		App.User.logout();
@@ -337,18 +347,16 @@ App.ListRoute = Ember.Route.extend({
 		return  App.User.findAll();
 	}
 });
-App.DynamicRoute = Ember.Route.extend({
-	model: function() {
-		console.log('dynamic');
-		return [{
-			test: 2222
-		}]
-	},
-	renderTemplate: function(controller, model) {
-		this.render('list', {
-			model: [{
-				test: 2222222
-			}]
-		});
+
+App.EditView = Ember.View.extend({
+	didInsertElement:function(){
+		var upload = new Mobile_upload();
+		var img = $('#editAvatar>img');
+		upload.init({target:$('#editAvatar'),callback:function(result,name,postName){
+			img.attr('src',result)
+		}});
+
+		var selectArea = new MobileSelectArea();
+		selectArea.init({trigger:$('#txt_area'),value:$('#txt_area').data('value'),data:'json/area.json'});
 	}
 });

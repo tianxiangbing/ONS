@@ -7,7 +7,8 @@ callback({
 			"publish":{
 				"date":"1天前",
 				"img":"http://oss.aliyuncs.com//kalemao/idc/7241445847748480",
-				"desc":"hello world."
+				"desc":"hello world.",
+				"praises":12312
 			}
 		},{
 			"id":2,
@@ -16,7 +17,8 @@ callback({
 			"publish":{
 				"date":"1天前",
 				"img":"http://oss.aliyuncs.com//kalemao/idc/7241445847748480",
-				"desc":"hehe."
+				"desc":"hehe.",
+				"praises":5035
 			}
 		}]
 	},
