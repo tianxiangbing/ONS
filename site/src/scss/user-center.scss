@@ -94,7 +94,6 @@
             display: table-cell;
             text-align: right;
             float: right;
-
             @extend %eidtColor;
 
             input {
@@ -105,6 +104,32 @@
             }
         }
 
+        &:last-child {
+            border: none !important;
+        }
+    }
+}
+.mask{
+    height: 100%;
+    width:100%;
+    background-color:rgba(0,0,0,.5);
+    position:absolute;
+    top:0;
+    left:0;
+    z-index: 9;
+}
+.box{
+    position:absolute;
+    z-index: 10;
+    background-color:#fff;
+    top:40%;
+    border-radius:$borderRadius;
+    width:7.5rem;
+    box-sizing:$boxSizing;
+    padding:$toolbarPadding;
+    .item{
+        padding:$toolbarPadding;
+        border-bottom:1px solid #e5e5e5;
         &:last-child {
             border: none !important;
         }

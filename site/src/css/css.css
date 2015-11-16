@@ -226,9 +226,12 @@ body {
       color: #333;
       position: absolute;
       bottom: 8px;
-      left: 5px; }
+      left: 5px;
+      vertical-align: middle; }
     .login .input-uname input, .login .input-pwd input, .regist .input-uname input, .regist .input-pwd input {
-      padding: 0 25px; }
+      padding: 0 25px;
+      line-height: normal;
+      vertical-align: middle; }
     .login .input-uname .pwd-look, .login .input-pwd .pwd-look, .regist .input-uname .pwd-look, .regist .input-pwd .pwd-look {
       left: auto;
       right: 5px;
@@ -346,6 +349,30 @@ body {
         border: none;
         text-align: right; }
     .edit .row:last-child {
+      border: none !important; }
+
+.mask {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9; }
+
+.box {
+  position: absolute;
+  z-index: 10;
+  background-color: #fff;
+  top: 40%;
+  border-radius: 4px;
+  width: 7.5rem;
+  box-sizing: border-box;
+  padding: 0.1rem; }
+  .box .item {
+    padding: 0.1rem;
+    border-bottom: 1px solid #e5e5e5; }
+    .box .item:last-child {
       border: none !important; }
 
 .mem-list .item {

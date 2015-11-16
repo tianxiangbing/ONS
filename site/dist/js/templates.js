@@ -154,24 +154,31 @@ Ember.TEMPLATES["edit"] = Ember.Handlebars.template(function anonymous(Handlebar
 /**/) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', stack1, helper, options, escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing;
+  var buffer = '', stack1, escapeExpression=this.escapeExpression, helperMissing=helpers.helperMissing, self=this;
 
-
-  data.buffer.push("<div class=\"edit\">\r\n	<div class=\"row\">\r\n		<div class=\"label\">头像</div>\r\n		<div class=\"edit-info\" id=\"editAvatar\">\r\n			<img ");
+function program1(depth0,data) {
+  
+  var buffer = '', stack1, helper, options;
+  data.buffer.push("\r\n<div class=\"edit\">\r\n	<div class=\"row\">\r\n		<div class=\"label\">头像</div>\r\n		<div class=\"edit-info\" id=\"editAvatar\">\r\n			<img ");
   data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
     'src': ("avatar")
   },hashTypes:{'src': "ID"},hashContexts:{'src': depth0},contexts:[],types:[],data:data})));
-  data.buffer.push(">\r\n		</div>\r\n	</div>\r\n	<div class=\"row\">\r\n		<div class=\"label\">昵称</div>\r\n		<div class=\"edit-info\">\r\n		");
+  data.buffer.push(">\r\n		</div>\r\n	</div>\r\n	<div class=\"row\">\r\n		<div class=\"label\">昵称</div>\r\n		<div class=\"edit-info\">\r\n			");
   data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
     'value': ("nickname")
   },hashTypes:{'value': "ID"},hashContexts:{'value': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
   data.buffer.push("\r\n		</div>\r\n	</div>\r\n	<div class=\"row\">\r\n		<div class=\"label\">账号</div>\r\n		<div class=\"edit-info\">\r\n			");
   stack1 = helpers._triageMustache.call(depth0, "username", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\r\n		</div>\r\n	</div>\r\n</div>\r\n<div class=\"edit\">\r\n	<div class=\"row\">\r\n		<div class=\"label\">性别</div>\r\n		<div class=\"edit-info\">\r\n			");
+  data.buffer.push("\r\n			");
+  stack1 = helpers._triageMustache.call(depth0, "username", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\r\n		</div>\r\n	</div>\r\n</div>\r\n<div class=\"edit\">\r\n	<div class=\"row\" ");
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "showSex", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["STRING"],data:data})));
+  data.buffer.push(">\r\n		<div class=\"label\">性别</div>\r\n		<div class=\"edit-info\">\r\n			");
   stack1 = helpers._triageMustache.call(depth0, "sex", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\r\n		</div>\r\n	</div>\r\n	<div class=\"row\">\r\n		<div class=\"label\">地区</div>\r\n		<div class=\"edit-info\">\r\n		<input type=\"text\" id=\"txt_area\" ");
+  data.buffer.push("\r\n		</div>\r\n	</div>\r\n	<div class=\"row\">\r\n		<div class=\"label\">地区</div>\r\n		<div class=\"edit-info\">\r\n			<input type=\"text\" id=\"txt_area\" ");
   data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
     'value': ("area"),
     'data-value': ("areaid")
@@ -180,7 +187,26 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   data.buffer.push(escapeExpression((helper = helpers.input || (depth0 && depth0.input),options={hash:{
     'value': ("autograph")
   },hashTypes:{'value': "ID"},hashContexts:{'value': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "input", options))));
-  data.buffer.push("\r\n		</div>\r\n	</div>\r\n</div>");
+  data.buffer.push("\r\n		</div>\r\n	</div>\r\n</div>\r\n");
+  return buffer;
+  }
+
+function program3(depth0,data) {
+  
+  var buffer = '';
+  data.buffer.push("\r\n<div class=\"mask\">\r\n</div>\r\n<div class=\"box sex-box\">\r\n	<div class=\"item\" ");
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "setSex", "男", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["STRING","STRING"],data:data})));
+  data.buffer.push(">\r\n		男\r\n	</div>\r\n	<div class=\"item\" ");
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "setSex", "女", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["STRING","STRING"],data:data})));
+  data.buffer.push(">\r\n		女\r\n	</div>\r\n</div>\r\n");
+  return buffer;
+  }
+
+  stack1 = helpers['with'].call(depth0, "model", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\r\n");
+  stack1 = helpers['if'].call(depth0, "isShowSex", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(3, program3, data),contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   return buffer;
   
 });

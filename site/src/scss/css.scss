@@ -44,10 +44,14 @@ body {
             position: absolute;
             bottom: 8px;
             left: 5px;
+            vertical-align:middle;
         }
 
         input {
-            padding: 0 25px;
+            padding:0 25px;
+            line-height: normal;
+            //background-color:yellow;
+            vertical-align:middle;
         }
 
         .pwd-look {

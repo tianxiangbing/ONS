@@ -1,3 +1,4 @@
+{{#with model}}
 <div class="edit">
 	<div class="row">
 		<div class="label">头像</div>
@@ -8,18 +9,19 @@
 	<div class="row">
 		<div class="label">昵称</div>
 		<div class="edit-info">
-		{{input value=nickname}}
+			{{input value=nickname}}
 		</div>
 	</div>
 	<div class="row">
 		<div class="label">账号</div>
 		<div class="edit-info">
 			{{username}}
+			{{username}}
 		</div>
 	</div>
 </div>
 <div class="edit">
-	<div class="row">
+	<div class="row" {{action "showSex"}}>
 		<div class="label">性别</div>
 		<div class="edit-info">
 			{{sex}}
@@ -28,7 +30,7 @@
 	<div class="row">
 		<div class="label">地区</div>
 		<div class="edit-info">
-		<input type="text" id="txt_area" {{bind-attr value="area" data-value=areaid}} >
+			<input type="text" id="txt_area" {{bind-attr value="area" data-value=areaid}} >
 		</div>
 	</div>
 	<div class="row">
@@ -38,3 +40,16 @@
 		</div>
 	</div>
 </div>
+{{/with}}
+{{#if isShowSex}}
+<div class="mask">
+</div>
+<div class="box sex-box">
+	<div class="item" {{action "setSex" "男"}}>
+		男
+	</div>
+	<div class="item" {{action "setSex" "女"}}>
+		女
+	</div>
+</div>
+{{/if}}

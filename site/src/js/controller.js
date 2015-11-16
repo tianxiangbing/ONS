@@ -71,3 +71,16 @@ App.IndexController = Ember.Controller.extend({
 		}
 	}
 });
+
+App.EditController = Ember.Controller.extend({
+	isShowSex:false,
+	actions:{
+		showSex:function(){
+			this.set('isShowSex',true);
+		},
+		setSex:function(arg){
+			this.set('model.sex',arg);
+			this.set('isShowSex',false);
+		}
+	}
+});
