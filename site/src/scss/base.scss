@@ -1,67 +1,108 @@
-html,body,ul,li,input{padding:0;margin:0;list-style: none;outline: none;resize:none;}
-$backgroundColor:#f2f2f2;
-$fontSize:12px !default;
-$btnFontSize:14px !default;
-.f12{font-size:$fontSize;}
-$linkColor: #59AAE1 #59AAE1 !default;
-$fontFamily: "Microsoft YaHei";
-$color:#333 !default;
-$toolBackColor:#fff !default;
-$grayColor:#999;
-$screenWidth:7.5rem;
-a{
-  color:nth($linkColor,1);
-  text-decoration: none;
-  &:hover{
-    color:nth($linkColor,2);
-  }
-}
-$fs:(f12:12px,f13:13px,f14:14px,f16:16px,f18:18px);
-@each $cls,$px in $fs{
-	.#{$cls}{font-size: $px}
-}
-$border:1px solid #e5e5e5;
-$borderRadius:4px !default;
-$inputHeight:30px 30px !default;
-$inputWidth:100% !default;
-$inputPadding:2px 5px;
-$boxSizing:border-box !default;
-$center:0 auto !default;
-$block:block !default;
-$white:#fff !default;
-$btnAlign:center;
-.btn{
-	border:none;
-	border-radius: $borderRadius;
-	color:$white;
-	text-align: $btnAlign;
-	font-size: $btnFontSize;
-	&.btn-big{
-		font-size: 16px;
-		width:100%;
-		padding:10px 0;
-	}
-	cursor: pointer;
-}
-$gray:#55534C;
-$green: #1DAF4D;
-$attrType:(m:margin,p:padding);
-$direction:(t:top, r:right, b:bottom, l:left);
-$px:5 10 15 20 25 30;
-@each $attr,$attrValue in $attrType{
-	@each $cls,$dAttr in $direction{
-		@each $p in $px{
-		.#{$attr}#{$cls}#{$p}{#{$attrValue}-#{$dAttr}:#{$p}px;}
-		}
-	}
-}
-.hide{
-	display:none;
+html, body, ul, li, input {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    outline: none;
+    resize: none;
 }
 
-$toolbarPadding:0.1rem;
-$fontColor:#333 !default;
+$backgroundColor: #f2f2f2;
+$fontSize: 12px !default;
+$btnFontSize: 14px !default;
+
+.f12 {
+    font-size: $fontSize;
+}
+
+$linkColor: #59AAE1 #59AAE1 !default;
+$fontFamily: "Microsoft YaHei";
+$color: #333 !default;
+$toolBackColor: #fff !default;
+$grayColor: #999;
+$screenWidth: 7.5rem;
+
+a {
+    color: nth($linkColor, 1);
+    text-decoration: none;
+
+    &:hover {
+        color: nth($linkColor, 2);
+    }
+}
+
+$fs: (f12: 12px, f13: 13px, f14: 14px, f16: 16px, f18: 18px);
+
+@each $cls, $px in $fs {
+    .#{$cls} {
+        font-size: $px;
+    }
+}
+
+$border: 1px solid #e5e5e5;
+$borderRadius: 4px !default;
+$inputHeight: 30px 30px !default;
+$inputWidth: 100% !default;
+$inputPadding: 2px 5px;
+$boxSizing: border-box !default;
+$center: 0 auto !default;
+$block: block !default;
+$white: #fff !default;
+$btnAlign: center;
+
+.btn {
+    border: none;
+    border-radius: $borderRadius;
+    color: $white;
+    text-align: $btnAlign;
+    font-size: $btnFontSize;
+
+    &.btn-big {
+        font-size: 16px;
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    cursor: pointer;
+}
+
+$gray: #55534C;
+$green: #1DAF4D;
+$attrType: (m: margin, p: padding);
+$direction: (t: top, r: right, b: bottom, l: left);
+$px: 5 10 15 20 25 30;
+
+@each $attr, $attrValue in $attrType {
+    @each $cls, $dAttr in $direction {
+        @each $p in $px {
+            .#{$attr}#{$cls}#{$p} {
+                #{$attrValue}-#{$dAttr}: #{$p}px;
+            }
+        }
+    }
+}
+
+.hide {
+    display: none;
+}
+
+$toolbarPadding: 0.1rem;
+$fontColor: #333 !default;
 $fontSize: 13px;
-$menuFontSize:0.8rem;
-$menuChildFontSize:0.6rem;
-$menuActivedColor:#08B62C;
+$menuFontSize: 0.8rem;
+$menuChildFontSize: 0.6rem;
+$menuActivedColor: #08B62C;
+
+%clearfix {
+        *zoom: 1;
+
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+        font: 0/0 a;
+    }
+
+    &:after {
+        clear: both;
+    }
+}

@@ -1,1 +1,30 @@
-{{user-info data=model}}
+<div class="mem-list">
+	{{#each item in model}}
+	<div class="item">
+		<div class="head">
+			<div class="avatar">
+				<img  {{bind-attr src=item.avatar}}>
+			</div>
+			<div class="mem-desc">
+				<div class="nickname">
+				{{item.nickname}}
+				</div>
+				<div class="time">{{item.autograph}}</div>
+			</div>
+		</div>
+		<div class="pub-content">
+			<div class="pub-imgs">
+				<div class="pub-img">
+					<img {{bind-attr src=item.publish.img}}>
+				</div>
+				<div class="pub-img">
+					<img {{bind-attr src=item.publish.img}}>
+				</div>
+				<div class="pub-img">
+					<img {{bind-attr src=item.publish.img}}>
+				</div>
+			</div>
+		</div>
+	</div>
+	{{/each}}
+</div>

@@ -30,7 +30,7 @@ App.LoginController = Ember.Controller.extend({
 					alert('请先完善资料！');
 					_this.transitionToRoute('info');
 				}else{
-					_this.transitionToRoute('index');
+					_this.transitionToRoute('friend');
 				}
 			});
 		}
@@ -80,6 +80,9 @@ App.EditController = Ember.Controller.extend({
 		},
 		setSex:function(arg){
 			this.set('model.sex',arg);
+			this.set('isShowSex',false);
+		},
+		cancel:function(){
 			this.set('isShowSex',false);
 		}
 	}

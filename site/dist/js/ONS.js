@@ -66,7 +66,7 @@ App.LoginController = Ember.Controller.extend({
 					alert('请先完善资料！');
 					_this.transitionToRoute('info');
 				}else{
-					_this.transitionToRoute('index');
+					_this.transitionToRoute('friend');
 				}
 			});
 		}
@@ -116,6 +116,9 @@ App.EditController = Ember.Controller.extend({
 		},
 		setSex:function(arg){
 			this.set('model.sex',arg);
+			this.set('isShowSex',false);
+		},
+		cancel:function(){
 			this.set('isShowSex',false);
 		}
 	}
@@ -178,6 +181,9 @@ App.User.reopenClass({
 	},
 	findAll: function() {
 		return App.Model.findAll('user', App.User, 'users');
+	},
+	findList:function(page){
+		return App.Model.findAll('list?page='+page, App.User, 'users');
 	},
 	checkToken: function() {
 		/*
@@ -356,10 +362,14 @@ App.ChangepwdRoute = Ember.Route.extend({
 });
 App.ListRoute = Ember.Route.extend({
 	model: function() {
-		return  App.User.findAll();
+		return  App.User.findList(1);
 	}
 });
-
+App.FriendRoute = Ember.Route.extend({
+	model:function(){
+		return  App.User.findAll();
+	}
+})
 App.EditView = Ember.View.extend({
 	didInsertElement:function(){
 		var upload = new Mobile_upload();

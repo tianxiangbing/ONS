@@ -4,11 +4,11 @@ Error: Undefined variable: "$toolbarPadding".
 
 1: .mem-list {
 2:     .item {
-3:         margin-bottom: $toolbarPadding*2;
+3:         margin-bottom: $toolbarPadding * 2;
 4:         background-color: $toolBackColor;
 5: 
 6:         .head {
-7:             overflow: hidden;
+7:             @extend %clearfix;
 8:             padding: $toolbarPadding;
 
 Backtrace:
@@ -71,4 +71,4 @@ C:/Ruby22-x64/bin/sass:23:in `<main>'
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$toolbarPadding\".\A         on line 3 of site/src/scss/member.scss\A \A 1: .mem-list {\A 2:     .item {\A 3:         margin-bottom: $toolbarPadding*2;\A 4:         background-color: $toolBackColor;\A 5: \A 6:         .head {\A 7:             overflow: hidden;\A 8:             padding: $toolbarPadding;"; }
+  content: "Error: Undefined variable: \"$toolbarPadding\".\A         on line 3 of site/src/scss/member.scss\A \A 1: .mem-list {\A 2:     .item {\A 3:         margin-bottom: $toolbarPadding * 2;\A 4:         background-color: $toolBackColor;\A 5: \A 6:         .head {\A 7:             @extend %clearfix;\A 8:             padding: $toolbarPadding;"; }

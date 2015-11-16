@@ -57,6 +57,9 @@ App.User.reopenClass({
 	findAll: function() {
 		return App.Model.findAll('user', App.User, 'users');
 	},
+	findList:function(page){
+		return App.Model.findAll('list?page='+page, App.User, 'users');
+	},
 	checkToken: function() {
 		/*
 			return ajax({

@@ -84,6 +84,11 @@ App.ChangepwdRoute = Ember.Route.extend({
 });
 App.ListRoute = Ember.Route.extend({
 	model: function() {
-		return  App.User.findAll();
+		return  App.User.findList(1);
 	}
 });
+App.FriendRoute = Ember.Route.extend({
+	model:function(){
+		return  App.User.findAll();
+	}
+})

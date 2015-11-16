@@ -16,7 +16,6 @@
 		<div class="label">账号</div>
 		<div class="edit-info">
 			{{username}}
-			{{username}}
 		</div>
 	</div>
 </div>
@@ -42,7 +41,7 @@
 </div>
 {{/with}}
 {{#if isShowSex}}
-<div class="mask">
+<div class="mask" {{action "cancel"}}>
 </div>
 <div class="box sex-box">
 	<div class="item" {{action "setSex" "男"}}>
