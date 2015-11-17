@@ -350,22 +350,22 @@ Ember.TEMPLATES["list"] = Ember.Handlebars.template(function anonymous(Handlebar
 /**/) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', stack1, escapeExpression=this.escapeExpression, self=this;
+  var buffer = '', stack1, escapeExpression=this.escapeExpression, self=this, helperMissing=helpers.helperMissing;
 
 function program1(depth0,data) {
   
-  var buffer = '', stack1;
+  var buffer = '', stack1, helper, options;
   data.buffer.push("\r\n	<div class=\"item\">\r\n		<div class=\"head\">\r\n			<div class=\"avatar\">\r\n				<img  ");
   data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
     'src': ("item.avatar")
   },hashTypes:{'src': "ID"},hashContexts:{'src': depth0},contexts:[],types:[],data:data})));
-  data.buffer.push(">\r\n			</div>\r\n			<div class=\"mem-desc\">\r\n				<div class=\"nickname\">\r\n				");
-  stack1 = helpers._triageMustache.call(depth0, "item.nickname", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  data.buffer.push(">\r\n			</div>\r\n			");
+  stack1 = (helper = helpers['link-to'] || (depth0 && depth0['link-to']),options={hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(2, program2, data),contexts:[depth0,depth0],types:["STRING","ID"],data:data},helper ? helper.call(depth0, "personal-data", "item", options) : helperMissing.call(depth0, "link-to", "personal-data", "item", options));
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\r\n				</div>\r\n				<div class=\"time\">");
-  stack1 = helpers._triageMustache.call(depth0, "item.autograph", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  data.buffer.push("\r\n			");
+  stack1 = helpers['if'].call(depth0, "item.isFollow", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(6, program6, data),fn:self.program(4, program4, data),contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("</div>\r\n			</div>\r\n		</div>\r\n		<div class=\"pub-content\">\r\n			<div class=\"pub-imgs\">\r\n				<div class=\"pub-img\">\r\n					<img ");
+  data.buffer.push("\r\n		</div>\r\n		<div class=\"pub-content\">\r\n			<div class=\"pub-imgs\">\r\n				<div class=\"pub-img\">\r\n					<img ");
   data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
     'src': ("item.publish.img")
   },hashTypes:{'src': "ID"},hashContexts:{'src': depth0},contexts:[],types:[],data:data})));
@@ -378,6 +378,36 @@ function program1(depth0,data) {
     'src': ("item.publish.img")
   },hashTypes:{'src': "ID"},hashContexts:{'src': depth0},contexts:[],types:[],data:data})));
   data.buffer.push(">\r\n				</div>\r\n			</div>\r\n		</div>\r\n	</div>\r\n	");
+  return buffer;
+  }
+function program2(depth0,data) {
+  
+  var buffer = '', stack1;
+  data.buffer.push("\r\n			<div class=\"mem-desc\">\r\n				<div class=\"nickname\">\r\n				");
+  stack1 = helpers._triageMustache.call(depth0, "item.nickname", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\r\n				</div>\r\n				<div class=\"time\">");
+  stack1 = helpers._triageMustache.call(depth0, "item.autograph", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("</div>\r\n			</div>\r\n			");
+  return buffer;
+  }
+
+function program4(depth0,data) {
+  
+  var buffer = '';
+  data.buffer.push("\r\n			<span class=\"follow ed\" ");
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "cancel", "item", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["STRING","ID"],data:data})));
+  data.buffer.push(">已关注</span>\r\n			");
+  return buffer;
+  }
+
+function program6(depth0,data) {
+  
+  var buffer = '';
+  data.buffer.push("\r\n			<span class=\"follow\" ");
+  data.buffer.push(escapeExpression(helpers.action.call(depth0, "follow", "item", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0,depth0],types:["STRING","ID"],data:data})));
+  data.buffer.push(">+关注</span>\r\n			");
   return buffer;
   }
 

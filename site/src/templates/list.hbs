@@ -5,12 +5,19 @@
 			<div class="avatar">
 				<img  {{bind-attr src=item.avatar}}>
 			</div>
+			{{#link-to "personal-data" item}}
 			<div class="mem-desc">
 				<div class="nickname">
 				{{item.nickname}}
 				</div>
 				<div class="time">{{item.autograph}}</div>
 			</div>
+			{{/link-to}}
+			{{#if item.isFollow}}
+			<span class="follow ed" {{action "cancel" item}}>已关注</span>
+			{{else}}
+			<span class="follow" {{action "follow" item}}>+关注</span>
+			{{/if}}
 		</div>
 		<div class="pub-content">
 			<div class="pub-imgs">

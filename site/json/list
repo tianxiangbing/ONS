@@ -5,6 +5,7 @@ callback({
 			"avatar":"http://oss.aliyuncs.com/wanse-att/http%3A//ott.wansecheng.com/upload/images/userface/user_center_phpto_362321_139.png",
 			"nickname":"fatimmmmaa",
 			"autograph":"哈哈",
+			"isFollow":false,
 			"publish":{
 				"img":"http://www.111cn.net/get_pic/php/upload/image/20151014/1444755642972217.png"
 			}
@@ -13,6 +14,7 @@ callback({
 			"avatar":"http://oss.aliyuncs.com/wanse-att/http%3A//ott.wansecheng.com/upload/images/userface/user_center_phpto_362321_139.png",
 			"nickname":"atxbsd",
 			"autograph":"呵呵",
+			"isFollow":true,
 			"publish":{
 				"img":"http://ubmcmm.baidustatic.com/media/v1/0f000nZLyi-3Box6BrNQQ6.jpg"
 			}

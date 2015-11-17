@@ -5,6 +5,7 @@
 
         .head {
             @extend %clearfix;
+
             padding: $toolbarPadding;
 
             .avatar {
@@ -21,8 +22,11 @@
 
             .mem-desc {
                 float: left;
+                line-height: .5rem;
 
                 @extend .ml10;
+
+                color: $fontColor;
             }
         }
 
@@ -39,26 +43,32 @@
 
         .pub-content {
             @extend %clearfix;
+
             padding-bottom: $toolbarPadding;
+
             .pub-imgs {
                 @extend %clearfix;
+
                 .pub-img {
-                    $imgWH:$screenWidth / 3;
+                    $imgWH: $screenWidth / 3;
+
                     padding-right: $toolbarPadding;
                     box-sizing: $boxSizing;
                     width: $imgWH;
                     height: $imgWH;
                     float: left;
-                    background-color:$toolBackColor;
+                    background-color: $toolBackColor;
                     vertical-align: middle;
                     line-height: $imgWH;
                     text-align: center;
+
                     img {
                         max-width: 100%;
                         max-height: 100%;
                     }
+
                     &:last-child {
-                        padding:0 !important;
+                        padding: 0 !important;
                     }
                 }
             }
@@ -66,6 +76,18 @@
 
         .pub-desc, .pub-praises {
             padding: $toolbarPadding;
+        }
+
+        .follow {
+            float: right;
+            line-height: .5rem;
+            border:2px solid #000;
+            padding:0 $toolbarPadding;
+            color:$fontColor;
+            &.ed{
+                color:$toolBackColor;
+                background-color:$bgColor;
+            }
         }
     }
 }

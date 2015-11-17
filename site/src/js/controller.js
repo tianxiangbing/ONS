@@ -29,7 +29,7 @@ App.LoginController = Ember.Controller.extend({
 				if (!data.sex || !data.area) {
 					alert('请先完善资料！');
 					_this.transitionToRoute('info');
-				}else{
+				} else {
 					_this.transitionToRoute('friend');
 				}
 			});
@@ -45,9 +45,9 @@ App.RegistController = Ember.Controller.extend({
 });
 App.ChangepwdController = Ember.Controller.extend({
 	actions: {
-		changepwd: function(username,password) {
+		changepwd: function(username, password) {
 			var _this = this;
-			UserInfo.username= username;
+			UserInfo.username = username;
 			UserInfo.password = password;
 			App.User.changepwd(UserInfo).done(function() {
 				alert('修改成功', null, function() {
@@ -73,17 +73,29 @@ App.IndexController = Ember.Controller.extend({
 });
 
 App.EditController = Ember.Controller.extend({
-	isShowSex:false,
-	actions:{
-		showSex:function(){
-			this.set('isShowSex',true);
+	isShowSex: false,
+	actions: {
+		showSex: function() {
+			this.set('isShowSex', true);
 		},
-		setSex:function(arg){
-			this.set('model.sex',arg);
-			this.set('isShowSex',false);
+		setSex: function(arg) {
+			this.set('model.sex', arg);
+			this.set('isShowSex', false);
 		},
-		cancel:function(){
-			this.set('isShowSex',false);
+		cancel: function() {
+			this.set('isShowSex', false);
+		}
+	}
+});
+App.ListController = Ember.ObjectController.extend({
+	actions: {
+		follow: function(item) {
+			//var d = this.get('model');
+			//var item = d.findBy('id',id);
+			item.set('isFollow',true);
+		},
+		cancel:function(item){
+			item.set('isFollow',false);
 		}
 	}
 });
