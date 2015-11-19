@@ -88,14 +88,25 @@ App.EditController = Ember.Controller.extend({
 	}
 });
 App.ListController = Ember.ObjectController.extend({
+	canLoadMore: true,
 	actions: {
 		follow: function(item) {
 			//var d = this.get('model');
 			//var item = d.findBy('id',id);
-			item.set('isFollow',true);
+			item.set('isFollow', true);
 		},
-		cancel:function(item){
-			item.set('isFollow',false);
+		cancel: function(item) {
+			item.set('isFollow', false);
+		},
+		loadMore:function(){
+			console.log('loadMore')
+		}
+	}
+});
+App.FriendController = Ember.Controller.extend({
+	actions: {
+		loadMore: function() {
+			alert(1)
 		}
 	}
 });

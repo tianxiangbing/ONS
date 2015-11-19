@@ -5,12 +5,14 @@
 			<div class="avatar">
 				<img  {{bind-attr src=item.avatar}}>
 			</div>
+			{{#link-to "friend.personal-data" item}}
 			<div class="mem-desc">
 				<div class="nickname">
 				{{item.nickname}}
 				</div>
 				<div class="time">{{item.publish.date}}</div>
 			</div>
+			{{/link-to}}
 		</div>
 		<div class="pub-content">
 			<div class="pub-img">

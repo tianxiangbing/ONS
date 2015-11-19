@@ -5,7 +5,7 @@
 			<div class="avatar">
 				<img  {{bind-attr src=item.avatar}}>
 			</div>
-			{{#link-to "personal-data" item}}
+			{{#link-to "list.personal-data" item}}
 			<div class="mem-desc">
 				<div class="nickname">
 				{{item.nickname}}
@@ -35,3 +35,6 @@
 	</div>
 	{{/each}}
 </div>
+{{#if canLoadMore}}
+<div class="ui-loading"><span>下拉查看更多</span><hr></div>
+{{/if}}

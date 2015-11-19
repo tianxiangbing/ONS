@@ -113,22 +113,19 @@ Ember.TEMPLATES["components/user-info"] = Ember.Handlebars.template(function ano
 /**/) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', stack1, escapeExpression=this.escapeExpression, self=this;
+  var buffer = '', stack1, escapeExpression=this.escapeExpression, self=this, helperMissing=helpers.helperMissing;
 
 function program1(depth0,data) {
   
-  var buffer = '', stack1;
+  var buffer = '', stack1, helper, options;
   data.buffer.push("\r\n	<div class=\"item\">\r\n		<div class=\"head\">\r\n			<div class=\"avatar\">\r\n				<img  ");
   data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
     'src': ("item.avatar")
   },hashTypes:{'src': "ID"},hashContexts:{'src': depth0},contexts:[],types:[],data:data})));
-  data.buffer.push(">\r\n			</div>\r\n			<div class=\"mem-desc\">\r\n				<div class=\"nickname\">\r\n				");
-  stack1 = helpers._triageMustache.call(depth0, "item.nickname", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  data.buffer.push(">\r\n			</div>\r\n			");
+  stack1 = (helper = helpers['link-to'] || (depth0 && depth0['link-to']),options={hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(2, program2, data),contexts:[depth0,depth0],types:["STRING","ID"],data:data},helper ? helper.call(depth0, "friend.personal-data", "item", options) : helperMissing.call(depth0, "link-to", "friend.personal-data", "item", options));
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\r\n				</div>\r\n				<div class=\"time\">");
-  stack1 = helpers._triageMustache.call(depth0, "item.publish.date", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
-  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("</div>\r\n			</div>\r\n		</div>\r\n		<div class=\"pub-content\">\r\n			<div class=\"pub-img\">\r\n				<img ");
+  data.buffer.push("\r\n		</div>\r\n		<div class=\"pub-content\">\r\n			<div class=\"pub-img\">\r\n				<img ");
   data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
     'src': ("item.publish.img")
   },hashTypes:{'src': "ID"},hashContexts:{'src': depth0},contexts:[],types:[],data:data})));
@@ -139,6 +136,18 @@ function program1(depth0,data) {
   stack1 = helpers._triageMustache.call(depth0, "item.publish.praises", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push(" 个赞\r\n			</div>\r\n		</div>\r\n	</div>\r\n	");
+  return buffer;
+  }
+function program2(depth0,data) {
+  
+  var buffer = '', stack1;
+  data.buffer.push("\r\n			<div class=\"mem-desc\">\r\n				<div class=\"nickname\">\r\n				");
+  stack1 = helpers._triageMustache.call(depth0, "item.nickname", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\r\n				</div>\r\n				<div class=\"time\">");
+  stack1 = helpers._triageMustache.call(depth0, "item.publish.date", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("</div>\r\n			</div>\r\n			");
   return buffer;
   }
 
@@ -220,6 +229,17 @@ helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
   data.buffer.push(escapeExpression((helper = helpers['user-info'] || (depth0 && depth0['user-info']),options={hash:{
     'data': ("model")
   },hashTypes:{'data': "ID"},hashContexts:{'data': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "user-info", options))));
+  
+});
+
+Ember.TEMPLATES["friend/personal-data"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data
+/**/) {
+this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
+  
+
+
+  data.buffer.push("personal-data");
   
 });
 
@@ -360,7 +380,7 @@ function program1(depth0,data) {
     'src': ("item.avatar")
   },hashTypes:{'src': "ID"},hashContexts:{'src': depth0},contexts:[],types:[],data:data})));
   data.buffer.push(">\r\n			</div>\r\n			");
-  stack1 = (helper = helpers['link-to'] || (depth0 && depth0['link-to']),options={hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(2, program2, data),contexts:[depth0,depth0],types:["STRING","ID"],data:data},helper ? helper.call(depth0, "personal-data", "item", options) : helperMissing.call(depth0, "link-to", "personal-data", "item", options));
+  stack1 = (helper = helpers['link-to'] || (depth0 && depth0['link-to']),options={hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(2, program2, data),contexts:[depth0,depth0],types:["STRING","ID"],data:data},helper ? helper.call(depth0, "list.personal-data", "item", options) : helperMissing.call(depth0, "link-to", "list.personal-data", "item", options));
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\r\n			");
   stack1 = helpers['if'].call(depth0, "item.isFollow", {hash:{},hashTypes:{},hashContexts:{},inverse:self.program(6, program6, data),fn:self.program(4, program4, data),contexts:[depth0],types:["ID"],data:data});
@@ -411,10 +431,18 @@ function program6(depth0,data) {
   return buffer;
   }
 
+function program8(depth0,data) {
+  
+  
+  data.buffer.push("\r\n<div class=\"ui-loading\"><span>下拉查看更多</span><hr></div>\r\n");
+  }
+
   data.buffer.push("<div class=\"mem-list\">\r\n	");
   stack1 = helpers.each.call(depth0, "item", "in", "model", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0,depth0,depth0],types:["ID","ID","ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
-  data.buffer.push("\r\n</div>");
+  data.buffer.push("\r\n</div>\r\n");
+  stack1 = helpers['if'].call(depth0, "canLoadMore", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(8, program8, data),contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   return buffer;
   
 });

@@ -13,22 +13,30 @@ Ember.Router.map(function() {
 		this.resource('list', {
 			path: "list"
 		}, function() {
+			this.resource('personal-data', {
+				path: 'personal-data/:id'
+			});
 			//this.resource('follow');
 			//this.resource('dynamic');
 		});
 		this.resource('logout');
 		this.resource('changepwd');
 		this.resource('write');
-		this.resource('friend');
+		this.resource('friend', {
+			path: 'friend'
+		}, function() {
+			this.route('personal-data', {
+				path: 'personal-data/:id'
+			});
+		});
 		this.resource('edit');
 	});
 	this.route('login', {
 		path: 'login'
 	});
-	this.resource('personal-data', {
-		path: 'personal-data/:id'
+	this.resource('regist', {
+		path: 'regist'
 	});
-	this.resource('regist',{path:'regist'});
 });
 App.IndexRoute = Ember.Route.extend({
 	beforeModel: function() {
@@ -49,9 +57,9 @@ App.LoginRoute = Ember.Route.extend({
 	model: function() {
 		return {};
 	},
-	setupController:function(c,m){
-		LocalStorageCache.get('username').done(function(r){
-			c.set('username',r)
+	setupController: function(c, m) {
+		LocalStorageCache.get('username').done(function(r) {
+			c.set('username', r)
 		});
 	}
 });
@@ -61,7 +69,7 @@ App.InfoRoute = Ember.Route.extend({
 	}
 });
 App.EditRoute = Ember.Route.extend({
-	model:function(){
+	model: function() {
 		return LocalStorageCache.get('userinfo');
 	}
 });
@@ -74,21 +82,21 @@ App.LogoutRoute = Ember.Route.extend({
 App.ChangepwdRoute = Ember.Route.extend({
 	model: function() {
 		console.log('change')
-		//return LocalStorageCache.get('userinfo');
+			//return LocalStorageCache.get('userinfo');
 	},
-	setupController:function(c,m){
-		LocalStorageCache.get('username').done(function(r){
-			c.set('username',r);
+	setupController: function(c, m) {
+		LocalStorageCache.get('username').done(function(r) {
+			c.set('username', r);
 		});
 	}
 });
 App.ListRoute = Ember.Route.extend({
 	model: function() {
-		return  App.User.findList(1);
+		return App.User.findList(1);
 	}
 });
 App.FriendRoute = Ember.Route.extend({
-	model:function(){
-		return  App.User.findAll();
+	model: function() {
+		return App.User.findAll();
 	}
 })

@@ -124,14 +124,25 @@ App.EditController = Ember.Controller.extend({
 	}
 });
 App.ListController = Ember.ObjectController.extend({
+	canLoadMore: true,
 	actions: {
 		follow: function(item) {
 			//var d = this.get('model');
 			//var item = d.findBy('id',id);
-			item.set('isFollow',true);
+			item.set('isFollow', true);
 		},
-		cancel:function(item){
-			item.set('isFollow',false);
+		cancel: function(item) {
+			item.set('isFollow', false);
+		},
+		loadMore:function(){
+			console.log('loadMore')
+		}
+	}
+});
+App.FriendController = Ember.Controller.extend({
+	actions: {
+		loadMore: function() {
+			alert(1)
 		}
 	}
 });
@@ -303,22 +314,30 @@ Ember.Router.map(function() {
 		this.resource('list', {
 			path: "list"
 		}, function() {
+			this.resource('personal-data', {
+				path: 'personal-data/:id'
+			});
 			//this.resource('follow');
 			//this.resource('dynamic');
 		});
 		this.resource('logout');
 		this.resource('changepwd');
 		this.resource('write');
-		this.resource('friend');
+		this.resource('friend', {
+			path: 'friend'
+		}, function() {
+			this.route('personal-data', {
+				path: 'personal-data/:id'
+			});
+		});
 		this.resource('edit');
 	});
 	this.route('login', {
 		path: 'login'
 	});
-	this.resource('personal-data', {
-		path: 'personal-data/:id'
+	this.resource('regist', {
+		path: 'regist'
 	});
-	this.resource('regist',{path:'regist'});
 });
 App.IndexRoute = Ember.Route.extend({
 	beforeModel: function() {
@@ -339,9 +358,9 @@ App.LoginRoute = Ember.Route.extend({
 	model: function() {
 		return {};
 	},
-	setupController:function(c,m){
-		LocalStorageCache.get('username').done(function(r){
-			c.set('username',r)
+	setupController: function(c, m) {
+		LocalStorageCache.get('username').done(function(r) {
+			c.set('username', r)
 		});
 	}
 });
@@ -351,7 +370,7 @@ App.InfoRoute = Ember.Route.extend({
 	}
 });
 App.EditRoute = Ember.Route.extend({
-	model:function(){
+	model: function() {
 		return LocalStorageCache.get('userinfo');
 	}
 });
@@ -364,33 +383,69 @@ App.LogoutRoute = Ember.Route.extend({
 App.ChangepwdRoute = Ember.Route.extend({
 	model: function() {
 		console.log('change')
-		//return LocalStorageCache.get('userinfo');
+			//return LocalStorageCache.get('userinfo');
 	},
-	setupController:function(c,m){
-		LocalStorageCache.get('username').done(function(r){
-			c.set('username',r);
+	setupController: function(c, m) {
+		LocalStorageCache.get('username').done(function(r) {
+			c.set('username', r);
 		});
 	}
 });
 App.ListRoute = Ember.Route.extend({
 	model: function() {
-		return  App.User.findList(1);
+		return App.User.findList(1);
 	}
 });
 App.FriendRoute = Ember.Route.extend({
-	model:function(){
-		return  App.User.findAll();
+	model: function() {
+		return App.User.findAll();
 	}
 })
+
 App.EditView = Ember.View.extend({
-	didInsertElement:function(){
+	didInsertElement: function() {
 		var upload = new Mobile_upload();
 		var img = $('#editAvatar>img');
-		upload.init({target:$('#editAvatar'),callback:function(result,name,postName){
-			img.attr('src',result)
-		}});
+		upload.init({
+			target: $('#editAvatar'),
+			callback: function(result, name, postName) {
+				img.attr('src', result)
+			}
+		});
 
 		var selectArea = new MobileSelectArea();
-		selectArea.init({trigger:$('#txt_area'),value:$('#txt_area').data('value'),data:'json/area.json'});
+		selectArea.init({
+			trigger: $('#txt_area'),
+			value: $('#txt_area').data('value'),
+			data: 'json/area.json'
+		});
+	}
+});
+App.FriendView = Ember.View.extend({
+	didInsertElement: function() {
+		/*
+		var view = this;
+		var scroll = new ScrollLoad();
+		var options = {
+			container: $('.mem-list'),
+			url: ajax('list'),
+			format: function() {
+				Ember.tryInvoke(view.get('controller'), 'loadMore');
+			}
+		};
+		scroll.init(options);
+		this.$().bind('inview', function(event, isInView, visiblePartX, visiblePartY) {
+			debugger;
+			if (isInView) {
+				Ember.tryInvoke(view.get('controller'), 'loadMore');
+			}
+		});
+		 */
+	}
+});
+
+App.ListView = Ember.View.extend({
+	didInsertElement: function() {
+		//debugger;
 	}
 });
