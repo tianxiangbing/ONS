@@ -13,15 +13,14 @@ Ember.Router.map(function() {
 		this.resource('list', {
 			path: "list"
 		}, function() {
-			this.resource('personal-data', {
+			this.route('personal-data', {
 				path: 'personal-data/:id'
 			});
-			//this.resource('follow');
-			//this.resource('dynamic');
 		});
 		this.resource('logout');
 		this.resource('changepwd');
 		this.resource('write');
+		this.resource('edit');
 		this.resource('friend', {
 			path: 'friend'
 		}, function() {
@@ -29,7 +28,6 @@ Ember.Router.map(function() {
 				path: 'personal-data/:id'
 			});
 		});
-		this.resource('edit');
 	});
 	this.route('login', {
 		path: 'login'
@@ -90,13 +88,28 @@ App.ChangepwdRoute = Ember.Route.extend({
 		});
 	}
 });
-App.ListRoute = Ember.Route.extend({
+App.ListIndexRoute = Ember.Route.extend({
 	model: function() {
-		return App.User.findList(1);
+		return App.User.findList();
+	},
+	setupController: function(c, m) {
+		c.send('go');
 	}
 });
-App.FriendRoute = Ember.Route.extend({
+App.FriendIndexRoute = Ember.Route.extend({
 	model: function() {
-		return App.User.findAll();
+		//return App.User.findAll();
+		return [];
+	},
+	setupController: function(c, m) {
+		c.send('go');
+	/*
+		var that = this;
+		App.User.findAll().done(function(r) {
+			c.set("model", r.users);
+			c.set('ready',true)
+		});
+		//c.send('start')
+	 */
 	}
 })

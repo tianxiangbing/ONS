@@ -123,9 +123,17 @@ App.EditController = Ember.Controller.extend({
 		}
 	}
 });
-App.ListController = Ember.ObjectController.extend({
+App.ListIndexController = Ember.ObjectController.extend({
 	canLoadMore: true,
+	ready:false,
+	isload:false,
+	pageIndex:1,
+	List:[],
 	actions: {
+		start:function(){
+			this.set("isload",true);
+			console.log('start')
+		},
 		follow: function(item) {
 			//var d = this.get('model');
 			//var item = d.findBy('id',id);
@@ -134,15 +142,47 @@ App.ListController = Ember.ObjectController.extend({
 		cancel: function(item) {
 			item.set('isFollow', false);
 		},
-		loadMore:function(){
-			console.log('loadMore')
+		go:function(){
+			var pageIndex = this.get('pageIndex');
+			pageIndex ++;
+			//this.set('ready',false);
+			var that = this;
+			this.set('pageIndex',pageIndex);
+			App.User.findAll().done(function(r) {
+				var list = that.get('List').concat(r.users);
+				that.set('List',list)
+				that.set("model", that.get('List'));
+				that.set('ready',true)
+			});
 		}
 	}
 });
-App.FriendController = Ember.Controller.extend({
+App.FriendIndexController = Ember.Controller.extend({
+	ready:false,
+	isload:false,
+	pageIndex:1,
+	List:[],
+	readyObserver:function(){
+		console.log('change');
+		this.set("isload",true);
+	}.observes('ready'),
 	actions: {
-		loadMore: function() {
-			alert(1)
+		start:function(){
+			this.set("isload",true);
+			console.log('start')
+		},
+		go:function(){
+			var pageIndex = this.get('pageIndex');
+			pageIndex ++;
+			//this.set('ready',false);
+			var that = this;
+			this.set('pageIndex',pageIndex);
+			App.User.findAll().done(function(r) {
+				var list = that.get('List').concat(r.users);
+				that.set('List',list)
+				that.set("model", that.get('List'));
+				that.set('ready',true)
+			});
 		}
 	}
 });
@@ -177,10 +217,11 @@ App.Model.reopenClass({
 		});
 		return obj;
 	},
-	findAll: function(url, type, key) {
+	findAll: function(url, type, key,pageIndex) {
 		var collection = this;
-		ajax({
-			url: url
+		return ajax({
+			url: url,
+			data:{page:pageIndex}
 		}).done(function(data) {
 			$.each(data[key], function(i, row) {
 				var item = collection.contentArrayContains(row.id, type);
@@ -202,11 +243,11 @@ App.User.reopenClass({
 	find: function(id) {
 		return App.Model.find(id, App.User)
 	},
-	findAll: function() {
-		return App.Model.findAll('user', App.User, 'users');
+	findAll: function(pageIndex) {
+		return App.Model.findAll('user', App.User, 'users',pageIndex||1);
 	},
-	findList:function(page){
-		return App.Model.findAll('list?page='+page, App.User, 'users');
+	findList:function(pageIndex){
+		return App.Model.findAll('list', App.User, 'users',pageIndex||1);
 	},
 	checkToken: function() {
 		/*
@@ -314,15 +355,14 @@ Ember.Router.map(function() {
 		this.resource('list', {
 			path: "list"
 		}, function() {
-			this.resource('personal-data', {
+			this.route('personal-data', {
 				path: 'personal-data/:id'
 			});
-			//this.resource('follow');
-			//this.resource('dynamic');
 		});
 		this.resource('logout');
 		this.resource('changepwd');
 		this.resource('write');
+		this.resource('edit');
 		this.resource('friend', {
 			path: 'friend'
 		}, function() {
@@ -330,7 +370,6 @@ Ember.Router.map(function() {
 				path: 'personal-data/:id'
 			});
 		});
-		this.resource('edit');
 	});
 	this.route('login', {
 		path: 'login'
@@ -391,17 +430,31 @@ App.ChangepwdRoute = Ember.Route.extend({
 		});
 	}
 });
-App.ListRoute = Ember.Route.extend({
+App.ListIndexRoute = Ember.Route.extend({
 	model: function() {
-		return App.User.findList(1);
+		return App.User.findList();
+	},
+	setupController: function(c, m) {
+		c.send('go');
 	}
 });
-App.FriendRoute = Ember.Route.extend({
+App.FriendIndexRoute = Ember.Route.extend({
 	model: function() {
-		return App.User.findAll();
+		//return App.User.findAll();
+		return [];
+	},
+	setupController: function(c, m) {
+		c.send('go');
+	/*
+		var that = this;
+		App.User.findAll().done(function(r) {
+			c.set("model", r.users);
+			c.set('ready',true)
+		});
+		//c.send('start')
+	 */
 	}
 })
-
 App.EditView = Ember.View.extend({
 	didInsertElement: function() {
 		var upload = new Mobile_upload();
@@ -421,31 +474,35 @@ App.EditView = Ember.View.extend({
 		});
 	}
 });
-App.FriendView = Ember.View.extend({
+var View ={
 	didInsertElement: function() {
-		/*
+		this._childViews.length = 0;
+		var that = this;
+		this._scroll = function(e) {
+			that.scroll(e);
+		}
 		var view = this;
-		var scroll = new ScrollLoad();
-		var options = {
-			container: $('.mem-list'),
-			url: ajax('list'),
-			format: function() {
-				Ember.tryInvoke(view.get('controller'), 'loadMore');
+		Ember.$(document).on('scroll', this._scroll)
+	},
+	willDestroyElement: function() {
+		Ember.$(document).off('scroll', this._scroll);
+	},
+	scrollTop:function(){
+		return Ember.$(document).scrollTop();
+	},
+	scroll: function(e) {
+		var ready = this.controller.ready;
+		var scrollTop = this.scrollTop();
+		//console.log('scroll',scrollTop);
+		if (ready &&scrollTop) {
+			var clientHeight = document.documentElement.clientHeight;
+			if(scrollTop + clientHeight == $(document).height()){
+				//console.log('request')
+				this.controller.send('go')
 			}
-		};
-		scroll.init(options);
-		this.$().bind('inview', function(event, isInView, visiblePartX, visiblePartY) {
-			debugger;
-			if (isInView) {
-				Ember.tryInvoke(view.get('controller'), 'loadMore');
-			}
-		});
-		 */
+		}
 	}
-});
+};
+App.FriendIndexView = Ember.View.extend(View);
 
-App.ListView = Ember.View.extend({
-	didInsertElement: function() {
-		//debugger;
-	}
-});
+App.ListIndexView = Ember.View.extend(View);

@@ -87,9 +87,17 @@ App.EditController = Ember.Controller.extend({
 		}
 	}
 });
-App.ListController = Ember.ObjectController.extend({
+App.ListIndexController = Ember.ObjectController.extend({
 	canLoadMore: true,
+	ready:false,
+	isload:false,
+	pageIndex:1,
+	List:[],
 	actions: {
+		start:function(){
+			this.set("isload",true);
+			console.log('start')
+		},
 		follow: function(item) {
 			//var d = this.get('model');
 			//var item = d.findBy('id',id);
@@ -98,15 +106,47 @@ App.ListController = Ember.ObjectController.extend({
 		cancel: function(item) {
 			item.set('isFollow', false);
 		},
-		loadMore:function(){
-			console.log('loadMore')
+		go:function(){
+			var pageIndex = this.get('pageIndex');
+			pageIndex ++;
+			//this.set('ready',false);
+			var that = this;
+			this.set('pageIndex',pageIndex);
+			App.User.findAll().done(function(r) {
+				var list = that.get('List').concat(r.users);
+				that.set('List',list)
+				that.set("model", that.get('List'));
+				that.set('ready',true)
+			});
 		}
 	}
 });
-App.FriendController = Ember.Controller.extend({
+App.FriendIndexController = Ember.Controller.extend({
+	ready:false,
+	isload:false,
+	pageIndex:1,
+	List:[],
+	readyObserver:function(){
+		console.log('change');
+		this.set("isload",true);
+	}.observes('ready'),
 	actions: {
-		loadMore: function() {
-			alert(1)
+		start:function(){
+			this.set("isload",true);
+			console.log('start')
+		},
+		go:function(){
+			var pageIndex = this.get('pageIndex');
+			pageIndex ++;
+			//this.set('ready',false);
+			var that = this;
+			this.set('pageIndex',pageIndex);
+			App.User.findAll().done(function(r) {
+				var list = that.get('List').concat(r.users);
+				that.set('List',list)
+				that.set("model", that.get('List'));
+				that.set('ready',true)
+			});
 		}
 	}
 });

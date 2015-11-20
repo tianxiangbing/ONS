@@ -29,10 +29,11 @@ App.Model.reopenClass({
 		});
 		return obj;
 	},
-	findAll: function(url, type, key) {
+	findAll: function(url, type, key,pageIndex) {
 		var collection = this;
-		ajax({
-			url: url
+		return ajax({
+			url: url,
+			data:{page:pageIndex}
 		}).done(function(data) {
 			$.each(data[key], function(i, row) {
 				var item = collection.contentArrayContains(row.id, type);
@@ -54,11 +55,11 @@ App.User.reopenClass({
 	find: function(id) {
 		return App.Model.find(id, App.User)
 	},
-	findAll: function() {
-		return App.Model.findAll('user', App.User, 'users');
+	findAll: function(pageIndex) {
+		return App.Model.findAll('user', App.User, 'users',pageIndex||1);
 	},
-	findList:function(page){
-		return App.Model.findAll('list?page='+page, App.User, 'users');
+	findList:function(pageIndex){
+		return App.Model.findAll('list', App.User, 'users',pageIndex||1);
 	},
 	checkToken: function() {
 		/*

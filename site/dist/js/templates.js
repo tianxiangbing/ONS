@@ -219,16 +219,25 @@ function program3(depth0,data) {
   
 });
 
-Ember.TEMPLATES["friend"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data
+Ember.TEMPLATES["friend/index"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data
 /**/) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var helper, options, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression;
+  var buffer = '', stack1, helper, options, helperMissing=helpers.helperMissing, escapeExpression=this.escapeExpression, self=this;
 
+function program1(depth0,data) {
+  
+  
+  data.buffer.push("\r\nloading....\r\n");
+  }
 
   data.buffer.push(escapeExpression((helper = helpers['user-info'] || (depth0 && depth0['user-info']),options={hash:{
     'data': ("model")
   },hashTypes:{'data': "ID"},hashContexts:{'data': depth0},contexts:[],types:[],data:data},helper ? helper.call(depth0, options) : helperMissing.call(depth0, "user-info", options))));
+  data.buffer.push("\r\n");
+  stack1 = helpers['if'].call(depth0, "isload", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(1, program1, data),contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  return buffer;
   
 });
 
@@ -366,7 +375,7 @@ function program5(depth0,data) {
   
 });
 
-Ember.TEMPLATES["list"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data
+Ember.TEMPLATES["list/index"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data
 /**/) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
@@ -444,6 +453,17 @@ function program8(depth0,data) {
   stack1 = helpers['if'].call(depth0, "canLoadMore", {hash:{},hashTypes:{},hashContexts:{},inverse:self.noop,fn:self.program(8, program8, data),contexts:[depth0],types:["ID"],data:data});
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   return buffer;
+  
+});
+
+Ember.TEMPLATES["list/personal-data"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data
+/**/) {
+this.compilerInfo = [4,'>= 1.0.0'];
+helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
+  
+
+
+  data.buffer.push("personal-data");
   
 });
 

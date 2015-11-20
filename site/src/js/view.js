@@ -17,31 +17,35 @@ App.EditView = Ember.View.extend({
 		});
 	}
 });
-App.FriendView = Ember.View.extend({
+var View ={
 	didInsertElement: function() {
-		/*
+		this._childViews.length = 0;
+		var that = this;
+		this._scroll = function(e) {
+			that.scroll(e);
+		}
 		var view = this;
-		var scroll = new ScrollLoad();
-		var options = {
-			container: $('.mem-list'),
-			url: ajax('list'),
-			format: function() {
-				Ember.tryInvoke(view.get('controller'), 'loadMore');
+		Ember.$(document).on('scroll', this._scroll)
+	},
+	willDestroyElement: function() {
+		Ember.$(document).off('scroll', this._scroll);
+	},
+	scrollTop:function(){
+		return Ember.$(document).scrollTop();
+	},
+	scroll: function(e) {
+		var ready = this.controller.ready;
+		var scrollTop = this.scrollTop();
+		//console.log('scroll',scrollTop);
+		if (ready &&scrollTop) {
+			var clientHeight = document.documentElement.clientHeight;
+			if(scrollTop + clientHeight == $(document).height()){
+				//console.log('request')
+				this.controller.send('go')
 			}
-		};
-		scroll.init(options);
-		this.$().bind('inview', function(event, isInView, visiblePartX, visiblePartY) {
-			debugger;
-			if (isInView) {
-				Ember.tryInvoke(view.get('controller'), 'loadMore');
-			}
-		});
-		 */
+		}
 	}
-});
+};
+App.FriendIndexView = Ember.View.extend(View);
 
-App.ListView = Ember.View.extend({
-	didInsertElement: function() {
-		//debugger;
-	}
-});
+App.ListIndexView = Ember.View.extend(View);
