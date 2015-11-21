@@ -36,6 +36,7 @@ Ember.Router.map(function() {
 		path: 'regist'
 	});
 });
+
 App.IndexRoute = Ember.Route.extend({
 	beforeModel: function() {
 		var _this = this;
@@ -88,12 +89,18 @@ App.ChangepwdRoute = Ember.Route.extend({
 		});
 	}
 });
+App.ListRoute = Ember.Route.extend({
+    redirect: function() {
+        this.transitionTo('list.index');
+    }
+});
+
 App.ListIndexRoute = Ember.Route.extend({
 	model: function() {
-		return App.User.findList();
+		return [];
 	},
 	setupController: function(c, m) {
-		c.send('go');
+		//c.send('go');
 	}
 });
 App.FriendIndexRoute = Ember.Route.extend({
@@ -102,7 +109,7 @@ App.FriendIndexRoute = Ember.Route.extend({
 		return [];
 	},
 	setupController: function(c, m) {
-		c.send('go');
+		//c.send('go');
 	/*
 		var that = this;
 		App.User.findAll().done(function(r) {

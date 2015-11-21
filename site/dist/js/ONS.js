@@ -127,7 +127,7 @@ App.ListIndexController = Ember.ObjectController.extend({
 	canLoadMore: true,
 	ready:false,
 	isload:false,
-	pageIndex:1,
+	pageIndex:0,
 	List:[],
 	actions: {
 		start:function(){
@@ -145,10 +145,10 @@ App.ListIndexController = Ember.ObjectController.extend({
 		go:function(){
 			var pageIndex = this.get('pageIndex');
 			pageIndex ++;
-			//this.set('ready',false);
+			this.set('ready',false);
 			var that = this;
 			this.set('pageIndex',pageIndex);
-			App.User.findAll().done(function(r) {
+			App.User.findList(pageIndex).done(function(r) {
 				var list = that.get('List').concat(r.users);
 				that.set('List',list)
 				that.set("model", that.get('List'));
@@ -160,7 +160,7 @@ App.ListIndexController = Ember.ObjectController.extend({
 App.FriendIndexController = Ember.Controller.extend({
 	ready:false,
 	isload:false,
-	pageIndex:1,
+	pageIndex:0,
 	List:[],
 	readyObserver:function(){
 		console.log('change');
@@ -177,7 +177,7 @@ App.FriendIndexController = Ember.Controller.extend({
 			//this.set('ready',false);
 			var that = this;
 			this.set('pageIndex',pageIndex);
-			App.User.findAll().done(function(r) {
+			App.User.findAll(pageIndex).done(function(r) {
 				var list = that.get('List').concat(r.users);
 				that.set('List',list)
 				that.set("model", that.get('List'));
@@ -185,6 +185,18 @@ App.FriendIndexController = Ember.Controller.extend({
 			});
 		}
 	}
+});
+
+App.ListPersonalDataController = Ember.Controller.extend({
+	content: null,
+    contentObserver: function() {
+		console.log('controller')
+        console.log('Blog.BlogPostController contentObserver: ' + this.get('content.id'));
+        if (this.get('content')) {
+            var page = this.get('content');
+
+        }
+    }.observes('content')
 });
 /*
  * Created with Sublime Text 2.
@@ -378,6 +390,7 @@ Ember.Router.map(function() {
 		path: 'regist'
 	});
 });
+
 App.IndexRoute = Ember.Route.extend({
 	beforeModel: function() {
 		var _this = this;
@@ -430,12 +443,18 @@ App.ChangepwdRoute = Ember.Route.extend({
 		});
 	}
 });
+App.ListRoute = Ember.Route.extend({
+    redirect: function() {
+        this.transitionTo('list.index');
+    }
+});
+
 App.ListIndexRoute = Ember.Route.extend({
 	model: function() {
-		return App.User.findList();
+		return [];
 	},
 	setupController: function(c, m) {
-		c.send('go');
+		//c.send('go');
 	}
 });
 App.FriendIndexRoute = Ember.Route.extend({
@@ -444,7 +463,7 @@ App.FriendIndexRoute = Ember.Route.extend({
 		return [];
 	},
 	setupController: function(c, m) {
-		c.send('go');
+		//c.send('go');
 	/*
 		var that = this;
 		App.User.findAll().done(function(r) {
@@ -476,12 +495,14 @@ App.EditView = Ember.View.extend({
 });
 var View ={
 	didInsertElement: function() {
-		this._childViews.length = 0;
 		var that = this;
 		this._scroll = function(e) {
 			that.scroll(e);
 		}
 		var view = this;
+		if(this._childViews[0]._childViews.length==0){
+			this.controller.send('go')
+		}
 		Ember.$(document).on('scroll', this._scroll)
 	},
 	willDestroyElement: function() {

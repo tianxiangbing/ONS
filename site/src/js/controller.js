@@ -91,7 +91,7 @@ App.ListIndexController = Ember.ObjectController.extend({
 	canLoadMore: true,
 	ready:false,
 	isload:false,
-	pageIndex:1,
+	pageIndex:0,
 	List:[],
 	actions: {
 		start:function(){
@@ -109,10 +109,10 @@ App.ListIndexController = Ember.ObjectController.extend({
 		go:function(){
 			var pageIndex = this.get('pageIndex');
 			pageIndex ++;
-			//this.set('ready',false);
+			this.set('ready',false);
 			var that = this;
 			this.set('pageIndex',pageIndex);
-			App.User.findAll().done(function(r) {
+			App.User.findList(pageIndex).done(function(r) {
 				var list = that.get('List').concat(r.users);
 				that.set('List',list)
 				that.set("model", that.get('List'));
@@ -124,7 +124,7 @@ App.ListIndexController = Ember.ObjectController.extend({
 App.FriendIndexController = Ember.Controller.extend({
 	ready:false,
 	isload:false,
-	pageIndex:1,
+	pageIndex:0,
 	List:[],
 	readyObserver:function(){
 		console.log('change');
@@ -141,7 +141,7 @@ App.FriendIndexController = Ember.Controller.extend({
 			//this.set('ready',false);
 			var that = this;
 			this.set('pageIndex',pageIndex);
-			App.User.findAll().done(function(r) {
+			App.User.findAll(pageIndex).done(function(r) {
 				var list = that.get('List').concat(r.users);
 				that.set('List',list)
 				that.set("model", that.get('List'));
@@ -149,4 +149,16 @@ App.FriendIndexController = Ember.Controller.extend({
 			});
 		}
 	}
+});
+
+App.ListPersonalDataController = Ember.Controller.extend({
+	content: null,
+    contentObserver: function() {
+		console.log('controller')
+        console.log('Blog.BlogPostController contentObserver: ' + this.get('content.id'));
+        if (this.get('content')) {
+            var page = this.get('content');
+
+        }
+    }.observes('content')
 });

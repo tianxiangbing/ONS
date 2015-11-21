@@ -245,10 +245,15 @@ Ember.TEMPLATES["friend/personal-data"] = Ember.Handlebars.template(function ano
 /**/) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  
+  var buffer = '', escapeExpression=this.escapeExpression;
 
 
-  data.buffer.push("personal-data");
+  data.buffer.push("<div class=\"avatar\">\r\n	<img  ");
+  data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
+    'src': ("item.avatar")
+  },hashTypes:{'src': "ID"},hashContexts:{'src': depth0},contexts:[],types:[],data:data})));
+  data.buffer.push(">\r\n</div>");
+  return buffer;
   
 });
 
@@ -460,10 +465,15 @@ Ember.TEMPLATES["list/personal-data"] = Ember.Handlebars.template(function anony
 /**/) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  
+  var buffer = '', escapeExpression=this.escapeExpression;
 
 
-  data.buffer.push("personal-data");
+  data.buffer.push("<div class=\"avatar\">\r\n\r\n11111\r\n	<img  ");
+  data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
+    'src': ("item.avatar")
+  },hashTypes:{'src': "ID"},hashContexts:{'src': depth0},contexts:[],types:[],data:data})));
+  data.buffer.push(">\r\n</div>");
+  return buffer;
   
 });
 
@@ -495,17 +505,6 @@ function program1(depth0,data) {
   if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
   data.buffer.push("\r\n</div>\r\n");
   return buffer;
-  
-});
-
-Ember.TEMPLATES["personal-data"] = Ember.Handlebars.template(function anonymous(Handlebars,depth0,helpers,partials,data
-/**/) {
-this.compilerInfo = [4,'>= 1.0.0'];
-helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  
-
-
-  data.buffer.push("personal-data");
   
 });
 

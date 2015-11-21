@@ -19,12 +19,14 @@ App.EditView = Ember.View.extend({
 });
 var View ={
 	didInsertElement: function() {
-		this._childViews.length = 0;
 		var that = this;
 		this._scroll = function(e) {
 			that.scroll(e);
 		}
 		var view = this;
+		if(this._childViews[0]._childViews.length==0){
+			this.controller.send('go')
+		}
 		Ember.$(document).on('scroll', this._scroll)
 	},
 	willDestroyElement: function() {
