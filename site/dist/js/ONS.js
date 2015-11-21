@@ -123,7 +123,7 @@ App.EditController = Ember.Controller.extend({
 		}
 	}
 });
-App.ListIndexController = Ember.ObjectController.extend({
+App.ListIndexController = Ember.ArrayController.extend({
 	canLoadMore: true,
 	ready:false,
 	isload:false,
@@ -151,7 +151,7 @@ App.ListIndexController = Ember.ObjectController.extend({
 			App.User.findList(pageIndex).done(function(r) {
 				var list = that.get('List').concat(r.users);
 				that.set('List',list)
-				that.set("model", that.get('List'));
+				that.set("content", that.get('List'));
 				that.set('ready',true)
 			});
 		}
@@ -187,12 +187,11 @@ App.FriendIndexController = Ember.Controller.extend({
 	}
 });
 
-App.ListPersonalDataController = Ember.Controller.extend({
-	content: null,
+App.ListPersonalDataController = Ember.ObjectController.extend({
     contentObserver: function() {
 		console.log('controller')
         console.log('Blog.BlogPostController contentObserver: ' + this.get('content.id'));
-        if (this.get('content')) {
+        if (this.get('model')) {
             var page = this.get('content');
 
         }
@@ -443,12 +442,6 @@ App.ChangepwdRoute = Ember.Route.extend({
 		});
 	}
 });
-App.ListRoute = Ember.Route.extend({
-    redirect: function() {
-        this.transitionTo('list.index');
-    }
-});
-
 App.ListIndexRoute = Ember.Route.extend({
 	model: function() {
 		return [];

@@ -465,12 +465,15 @@ Ember.TEMPLATES["list/personal-data"] = Ember.Handlebars.template(function anony
 /**/) {
 this.compilerInfo = [4,'>= 1.0.0'];
 helpers = this.merge(helpers, Ember.Handlebars.helpers); data = data || {};
-  var buffer = '', escapeExpression=this.escapeExpression;
+  var buffer = '', stack1, escapeExpression=this.escapeExpression;
 
 
-  data.buffer.push("<div class=\"avatar\">\r\n\r\n11111\r\n	<img  ");
+  data.buffer.push("<div class=\"avatar\">\r\n");
+  stack1 = helpers._triageMustache.call(depth0, "model.nickname", {hash:{},hashTypes:{},hashContexts:{},contexts:[depth0],types:["ID"],data:data});
+  if(stack1 || stack1 === 0) { data.buffer.push(stack1); }
+  data.buffer.push("\r\n11111\r\n	<img  ");
   data.buffer.push(escapeExpression(helpers['bind-attr'].call(depth0, {hash:{
-    'src': ("item.avatar")
+    'src': ("model.avatar")
   },hashTypes:{'src': "ID"},hashContexts:{'src': depth0},contexts:[],types:[],data:data})));
   data.buffer.push(">\r\n</div>");
   return buffer;

@@ -89,12 +89,6 @@ App.ChangepwdRoute = Ember.Route.extend({
 		});
 	}
 });
-App.ListRoute = Ember.Route.extend({
-    redirect: function() {
-        this.transitionTo('list.index');
-    }
-});
-
 App.ListIndexRoute = Ember.Route.extend({
 	model: function() {
 		return [];
