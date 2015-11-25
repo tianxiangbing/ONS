@@ -24,7 +24,7 @@ var View ={
 			that.scroll(e);
 		}
 		var view = this;
-		if(this._childViews[0]._childViews.length==0){
+		if(this._childViews[0]._childViews.length==0 || this._childViews[0]._childViews[0]._childViews.length==0){
 			this.controller.send('go')
 		}
 		Ember.$(document).on('scroll', this._scroll)

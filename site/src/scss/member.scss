@@ -81,13 +81,69 @@
         .follow {
             float: right;
             line-height: .5rem;
-            border:2px solid #000;
-            padding:0 $toolbarPadding;
-            color:$fontColor;
-            &.ed{
-                color:$toolBackColor;
-                background-color:$bgColor;
+            border: 2px solid #000;
+            padding: 0 $toolbarPadding;
+            color: $fontColor;
+
+            &.ed {
+                color: $toolBackColor;
+                background-color: $bgColor;
             }
         }
+    }
+}
+
+.member {
+    padding: $toolbarPadding ;
+
+    .avatar {
+        border-radius: 1.5rem;
+        width: 1.5rem;
+        margin: 0 auto;
+        overflow: hidden;
+
+        img {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+    }
+    .nickname{
+        @extend %textCenter;
+        @extend .f14;
+        @extend .fontBold;
+    }
+    .desc{
+        @extend .mt10;
+        @extend %textCenter;
+        color: darken(#999, 10%);
+        @extend %textCenter;
+    }
+    .praises{
+        float:left;
+        @extend %textCenter;
+    }
+    .publish{
+        @extend %clearfix;
+        clear:both;
+        border-top:$border;
+        padding:$toolbarPadding 0;
+
+        a{
+            width:( $screenWidth - $toolbarPadding * 2 ) / 3;
+            float:left;
+            padding-right: $toolbarPadding;
+            @extend %borderBox;
+            img{
+                width:100%;
+                height: 100%;
+            }
+        }
+    }
+    .add-praises{
+        @extend .btn;
+        width:2rem;
+        display: $block;
+        float:right;
+        @extend .mt10;
     }
 }

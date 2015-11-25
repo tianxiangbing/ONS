@@ -11,6 +11,9 @@ html, body, ul, li, input {
 .f12, .user-info .username {
   font-size: 12px; }
 
+.fontBold, .member .nickname {
+  font-weight: bold; }
+
 a {
   color: #59AAE1;
   text-decoration: none; }
@@ -23,7 +26,7 @@ a {
 .f13 {
   font-size: 13px; }
 
-.f14, .user-info .nickname, .toolbar {
+.f14, .user-info .nickname, .toolbar, .member .nickname {
   font-size: 14px; }
 
 .f16 {
@@ -32,14 +35,20 @@ a {
 .f18 {
   font-size: 18px; }
 
-.btn {
+.member .publish a {
+  box-sizing: border-box; }
+
+.member .nickname, .member .desc, .member .praises {
+  text-align: center; }
+
+.btn, .member .add-praises {
   border: none;
   border-radius: 4px;
   color: #fff;
   text-align: center;
   font-size: 14px;
   cursor: pointer; }
-  .btn.btn-big {
+  .btn.btn-big, .member .btn-big.add-praises {
     font-size: 16px;
     width: 100%;
     padding: 10px 0; }
@@ -47,7 +56,7 @@ a {
 .mt5 {
   margin-top: 5px; }
 
-.mt10 {
+.mt10, .member .desc, .member .add-praises {
   margin-top: 10px; }
 
 .mt15 {
@@ -191,13 +200,13 @@ a {
 .hide {
   display: none; }
 
-.mem-list .item .head, .mem-list .item .pub-content, .mem-list .item .pub-content .pub-imgs {
+.mem-list .item .head, .mem-list .item .pub-content, .mem-list .item .pub-content .pub-imgs, .member .publish {
   *zoom: 1; }
-  .mem-list .item .head:before, .mem-list .item .pub-content:before, .mem-list .item .pub-content .pub-imgs:before, .mem-list .item .head:after, .mem-list .item .pub-content:after, .mem-list .item .pub-content .pub-imgs:after {
+  .mem-list .item .head:before, .mem-list .item .pub-content:before, .mem-list .item .pub-content .pub-imgs:before, .member .publish:before, .mem-list .item .head:after, .mem-list .item .pub-content:after, .mem-list .item .pub-content .pub-imgs:after, .member .publish:after {
     content: "";
     display: table;
     font: 0/0 a; }
-  .mem-list .item .head:after, .mem-list .item .pub-content:after, .mem-list .item .pub-content .pub-imgs:after {
+  .mem-list .item .head:after, .mem-list .item .pub-content:after, .mem-list .item .pub-content .pub-imgs:after, .member .publish:after {
     clear: both; }
 
 body {
@@ -436,3 +445,33 @@ body {
     .mem-list .item .follow.ed {
       color: #fff;
       background-color: #000; }
+
+.member {
+  padding: 0.1rem; }
+  .member .avatar {
+    border-radius: 1.5rem;
+    width: 1.5rem;
+    margin: 0 auto;
+    overflow: hidden; }
+    .member .avatar img {
+      width: 1.5rem;
+      height: 1.5rem; }
+  .member .desc {
+    color: gray; }
+  .member .praises {
+    float: left; }
+  .member .publish {
+    clear: both;
+    border-top: 1px solid #e5e5e5;
+    padding: 0.1rem 0; }
+    .member .publish a {
+      width: 2.43333rem;
+      float: left;
+      padding-right: 0.1rem; }
+      .member .publish a img {
+        width: 100%;
+        height: 100%; }
+  .member .add-praises {
+    width: 2rem;
+    display: block;
+    float: right; }

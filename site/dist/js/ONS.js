@@ -125,13 +125,13 @@ App.EditController = Ember.Controller.extend({
 });
 App.ListIndexController = Ember.ArrayController.extend({
 	canLoadMore: true,
-	ready:false,
-	isload:false,
-	pageIndex:0,
-	List:[],
+	ready: false,
+	isload: false,
+	pageIndex: 0,
+	List: [],
 	actions: {
-		start:function(){
-			this.set("isload",true);
+		start: function() {
+			this.set("isload", true);
 			console.log('start')
 		},
 		follow: function(item) {
@@ -142,60 +142,88 @@ App.ListIndexController = Ember.ArrayController.extend({
 		cancel: function(item) {
 			item.set('isFollow', false);
 		},
-		go:function(){
+		go: function() {
 			var pageIndex = this.get('pageIndex');
-			pageIndex ++;
-			this.set('ready',false);
+			pageIndex++;
+			this.set('ready', false);
 			var that = this;
-			this.set('pageIndex',pageIndex);
+			this.set('pageIndex', pageIndex);
 			App.User.findList(pageIndex).done(function(r) {
 				var list = that.get('List').concat(r.users);
-				that.set('List',list)
+				that.set('List', list)
 				that.set("content", that.get('List'));
-				that.set('ready',true)
+				that.set('ready', true)
 			});
 		}
 	}
 });
 App.FriendIndexController = Ember.Controller.extend({
-	ready:false,
-	isload:false,
-	pageIndex:0,
-	List:[],
-	readyObserver:function(){
+	ready: false,
+	isload: false,
+	pageIndex: 0,
+	List: [],
+	readyObserver: function() {
 		console.log('change');
-		this.set("isload",true);
+		this.set("isload", true);
 	}.observes('ready'),
 	actions: {
-		start:function(){
-			this.set("isload",true);
+		start: function() {
+			this.set("isload", true);
 			console.log('start')
 		},
-		go:function(){
+		go: function() {
 			var pageIndex = this.get('pageIndex');
-			pageIndex ++;
+			pageIndex++;
 			//this.set('ready',false);
 			var that = this;
-			this.set('pageIndex',pageIndex);
+			this.set('pageIndex', pageIndex);
 			App.User.findAll(pageIndex).done(function(r) {
 				var list = that.get('List').concat(r.users);
-				that.set('List',list)
+				that.set('List', list)
 				that.set("model", that.get('List'));
-				that.set('ready',true)
+				that.set('ready', true)
 			});
 		}
 	}
 });
 
 App.ListPersonalDataController = Ember.ObjectController.extend({
-    contentObserver: function() {
-		console.log('controller')
-        console.log('Blog.BlogPostController contentObserver: ' + this.get('content.id'));
-        if (this.get('model')) {
-            var page = this.get('content');
-
-        }
-    }.observes('content')
+	ispraises: false,
+	contentObserver: function() {
+		//console.log('controller')
+		//console.log('Blog.BlogPostController contentObserver: ' + this.get('content.id'));
+		if (this.get('content')) {
+			var page = this.get('content');
+			var that = this;
+			App.User.findInfo(this.get('content.id')).done(function(result) {
+				console.log(result)
+				that.set('userInfo', result);
+				that.set('ispraises', result.ispraises);
+			})
+		}
+	}.observes('content'),
+	actions: {
+		changePraises: function() {
+			this.toggleProperty('ispraises');
+		}
+	}
+});
+App.ListPersonalDataSingleController = Ember.ObjectController.extend({
+	contentObserver: function() {
+		var m = this.get('model');
+		console.log(m)
+		this.set('item', {
+			avatar: m.img,
+			nickname: m.nickname,
+			id: m.id,
+			publish: {
+				img: this.get('img'),
+				desc: this.get('desc'),
+				date: this.get('date'),
+				praises: this.get('praises')
+			}
+		});
+	}.observes('model'),
 });
 /*
  * Created with Sublime Text 2.
@@ -253,6 +281,13 @@ App.User.reopenClass({
 	collection: Ember.A(),
 	find: function(id) {
 		return App.Model.find(id, App.User)
+	},
+	findInfo:function(id){
+		return ajax({
+			url: 'userinfo',
+			data: {id:id}
+		}).done(function(data){
+		});
 	},
 	findAll: function(pageIndex) {
 		return App.Model.findAll('user', App.User, 'users',pageIndex||1);
@@ -368,6 +403,10 @@ Ember.Router.map(function() {
 		}, function() {
 			this.route('personal-data', {
 				path: 'personal-data/:id'
+			}, function() {
+				this.route('single', {
+					path: 'single/:id'
+				});
 			});
 		});
 		this.resource('logout');
@@ -457,14 +496,19 @@ App.FriendIndexRoute = Ember.Route.extend({
 	},
 	setupController: function(c, m) {
 		//c.send('go');
-	/*
-		var that = this;
-		App.User.findAll().done(function(r) {
-			c.set("model", r.users);
-			c.set('ready',true)
-		});
-		//c.send('start')
-	 */
+		/*
+			var that = this;
+			App.User.findAll().done(function(r) {
+				c.set("model", r.users);
+				c.set('ready',true)
+			});
+			//c.send('start')
+		 */
+	}
+});
+App.ListPersonalDataSingleRoute = Ember.Route.extend({
+	model: function() {
+		this.transitionTo('list.personal-data');
 	}
 })
 App.EditView = Ember.View.extend({
@@ -493,7 +537,7 @@ var View ={
 			that.scroll(e);
 		}
 		var view = this;
-		if(this._childViews[0]._childViews.length==0){
+		if(this._childViews[0]._childViews.length==0 || this._childViews[0]._childViews[0]._childViews.length==0){
 			this.controller.send('go')
 		}
 		Ember.$(document).on('scroll', this._scroll)

@@ -9,9 +9,14 @@ html, body, ul, li, input {
 $backgroundColor: #f2f2f2;
 $fontSize: 12px !default;
 $btnFontSize: 14px !default;
-$bgColor:#000 !default;
+$bgColor: #000 !default;
+
 .f12 {
     font-size: $fontSize;
+}
+
+.fontBold {
+    font-weight: bold;
 }
 
 $linkColor: #59AAE1 #59AAE1 !default;
@@ -48,6 +53,12 @@ $center: 0 auto !default;
 $block: block !default;
 $white: #fff !default;
 $btnAlign: center;
+%borderBox {
+    box-sizing:$boxSizing;
+}
+%textCenter {
+    text-align: center;
+}
 
 .btn {
     border: none;
@@ -93,7 +104,7 @@ $menuChildFontSize: 0.6rem;
 $menuActivedColor: #08B62C;
 
 %clearfix {
-        *zoom: 1;
+    *zoom: 1;
 
     &:before,
     &:after {

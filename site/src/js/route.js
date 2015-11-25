@@ -15,6 +15,10 @@ Ember.Router.map(function() {
 		}, function() {
 			this.route('personal-data', {
 				path: 'personal-data/:id'
+			}, function() {
+				this.route('single', {
+					path: 'single/:id'
+				});
 			});
 		});
 		this.resource('logout');
@@ -104,13 +108,18 @@ App.FriendIndexRoute = Ember.Route.extend({
 	},
 	setupController: function(c, m) {
 		//c.send('go');
-	/*
-		var that = this;
-		App.User.findAll().done(function(r) {
-			c.set("model", r.users);
-			c.set('ready',true)
-		});
-		//c.send('start')
-	 */
+		/*
+			var that = this;
+			App.User.findAll().done(function(r) {
+				c.set("model", r.users);
+				c.set('ready',true)
+			});
+			//c.send('start')
+		 */
+	}
+});
+App.ListPersonalDataSingleRoute = Ember.Route.extend({
+	model: function() {
+		this.transitionTo('list.personal-data');
 	}
 })

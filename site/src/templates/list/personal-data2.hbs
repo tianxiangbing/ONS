@@ -1,0 +1,24 @@
+<div class="member">
+	<div class="avatar">
+		<img  {{bind-attr src=userInfo.avatar}}>
+	</div>
+	<div class="nickname">{{userInfo.nickname}}</div>
+	<div class="desc">{{userInfo.desc}}</div>
+	<div class="praises">
+		<div>{{userInfo.praises}}</div>
+		<div>粉丝人数</div>
+	</div>
+	{{#if ispraises}}
+	<a class="add-praises btn-gray" {{action 'changePraises'}}>取消跟踪</a>
+	{{else}}
+	<a class="add-praises btn-green" {{action 'changePraises'}}>跟踪</a>
+	{{/if}}
+	<div class="publish">
+		{{#each item in userInfo.publish}}
+		{{#link-to "list.personal-data.single" item}}
+			<img  {{bind-attr src=item.img}}>
+		{{/link-to}}
+		{{/each}}
+	</div>
+</div>
+{{outlet}}

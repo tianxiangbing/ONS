@@ -1,30 +1,26 @@
-<div class="mem-list">
-	{{#each item in data}}
-	<div class="item">
-		<div class="head">
-			<div class="avatar">
-				<img  {{bind-attr src=item.avatar}}>
-			</div>
-			{{#link-to "friend.personal-data" item}}
-			<div class="mem-desc">
-				<div class="nickname">
-				{{item.nickname}}
-				</div>
-				<div class="time">{{item.publish.date}}</div>
-			</div>
-			{{/link-to}}
+<div class="item">
+	<div class="head">
+		<div class="avatar">
+			<img  {{bind-attr src=item.avatar}}>
 		</div>
-		<div class="pub-content">
-			<div class="pub-img">
-				<img {{bind-attr src=item.publish.img}}>
+		{{#link-to "friend.personal-data" item}}
+		<div class="mem-desc">
+			<div class="nickname">
+				{{item.nickname}}
 			</div>
-			<div class="pub-desc">
-				{{item.publish.desc}}
-			</div>
-			<div class="pub-praises">
-				{{item.publish.praises}} 个赞
-			</div>
+			<div class="time">{{item.publish.date}}</div>
+		</div>
+		{{/link-to}}
+	</div>
+	<div class="pub-content">
+		<div class="pub-img">
+			<img {{bind-attr src=item.publish.img}}>
+		</div>
+		<div class="pub-desc">
+			{{item.publish.desc}}
+		</div>
+		<div class="pub-praises">
+			{{item.publish.praises}} 个赞
 		</div>
 	</div>
-	{{/each}}
 </div>

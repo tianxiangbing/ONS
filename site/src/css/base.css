@@ -8,6 +8,9 @@ html, body, ul, li, input {
 .f12 {
   font-size: 12px; }
 
+.fontBold {
+  font-weight: bold; }
+
 a {
   color: #59AAE1;
   text-decoration: none; }

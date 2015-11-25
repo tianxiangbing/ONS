@@ -1,4 +1,8 @@
-{{user-info data=model}}
-{{#if isload}}
-loading....
-{{/if}}
+<div class="mem-list">
+	{{#each item in content}}
+	{{user-info item=item}}
+	{{/each}}
+</div>
+	{{#if isload}}
+	loading....
+	{{/if}}

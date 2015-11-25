@@ -55,6 +55,13 @@ App.User.reopenClass({
 	find: function(id) {
 		return App.Model.find(id, App.User)
 	},
+	findInfo:function(id){
+		return ajax({
+			url: 'userinfo',
+			data: {id:id}
+		}).done(function(data){
+		});
+	},
 	findAll: function(pageIndex) {
 		return App.Model.findAll('user', App.User, 'users',pageIndex||1);
 	},
