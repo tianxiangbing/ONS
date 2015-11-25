@@ -137,10 +137,12 @@ App.ListIndexController = Ember.ArrayController.extend({
 		follow: function(item) {
 			//var d = this.get('model');
 			//var item = d.findBy('id',item.id);
-			item.set('isFollow', true);
+			//item.set('isFollow', true);
+			Ember.set(item,"isFollow",true)
 		},
 		cancel: function(item) {
-			item.set('isFollow', false);
+			//item.set('isFollow', false);
+			Ember.set(item,"isFollow",false)
 		},
 		go: function() {
 			var pageIndex = this.get('pageIndex');
