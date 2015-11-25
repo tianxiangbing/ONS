@@ -136,7 +136,7 @@ App.ListIndexController = Ember.ArrayController.extend({
 		},
 		follow: function(item) {
 			//var d = this.get('model');
-			//var item = d.findBy('id',id);
+			//var item = d.findBy('id',item.id);
 			item.set('isFollow', true);
 		},
 		cancel: function(item) {
@@ -187,7 +187,8 @@ App.FriendIndexController = Ember.Controller.extend({
 	}
 });
 
-App.ListPersonalDataController = Ember.ObjectController.extend({
+
+App.ListPersonalDataIndexController = Ember.ObjectController.extend({
 	ispraises: false,
 	contentObserver: function() {
 		//console.log('controller')
@@ -205,16 +206,22 @@ App.ListPersonalDataController = Ember.ObjectController.extend({
 	actions: {
 		changePraises: function() {
 			this.toggleProperty('ispraises');
+		},
+		linkSingle:function(param){
+			console.log(param)
+			this.transitionToRoute('list.personal-data.single',param);
 		}
 	}
 });
 App.ListPersonalDataSingleController = Ember.ObjectController.extend({
+	needs:['ListPersonalDataIndex'],
+	nickname:null,
+	avatar:null,
 	contentObserver: function() {
 		var m = this.get('model');
-		console.log(m)
 		this.set('item', {
-			avatar: m.img,
-			nickname: m.nickname,
+			avatar:this.get('avatar'),
+			nickname: this.get('nickname'),
 			id: m.id,
 			publish: {
 				img: this.get('img'),
@@ -225,6 +232,54 @@ App.ListPersonalDataSingleController = Ember.ObjectController.extend({
 		});
 	}.observes('model'),
 });
+
+App.FriendPersonalDataIndexController = Ember.ObjectController.extend({
+	ispraises: false,
+	nickname:null,
+	avatar:null,
+	contentObserver: function() {
+		//console.log('controller')
+		//console.log('Blog.BlogPostController contentObserver: ' + this.get('content.id'));
+		if (this.get('content')) {
+			var page = this.get('content');
+			var that = this;
+			App.User.findInfo(this.get('content.id')).done(function(result) {
+				console.log(result)
+				that.set('userInfo', result);
+				that.set('ispraises', result.ispraises);
+			})
+		}
+	}.observes('content'),
+	actions: {
+		changePraises: function() {
+			this.toggleProperty('ispraises');
+		},
+		linkSingle:function(param){
+			console.log(param)
+			this.transitionToRoute('friend.personal-data.single',param);
+		}
+	}
+});
+App.FriendPersonalDataSingleController = Ember.ObjectController.extend({
+	needs:['FriendPersonalDataIndex'],
+	nickname:null,
+	avatar:null,
+	contentObserver: function() {
+		var m = this.get('model');
+		this.set('item', {
+			avatar:this.get('avatar'),
+			nickname: this.get('nickname'),
+			id: m.id,
+			publish: {
+				img: this.get('img'),
+				desc: this.get('desc'),
+				date: this.get('date'),
+				praises: this.get('praises')
+			}
+		});
+	}.observes('model'),
+});
+
 /*
  * Created with Sublime Text 2.
  * User: 田想兵
@@ -418,6 +473,10 @@ Ember.Router.map(function() {
 		}, function() {
 			this.route('personal-data', {
 				path: 'personal-data/:id'
+			}, function() {
+				this.route('single', {
+					path: 'single/:id'
+				});
 			});
 		});
 	});
@@ -483,7 +542,7 @@ App.ChangepwdRoute = Ember.Route.extend({
 });
 App.ListIndexRoute = Ember.Route.extend({
 	model: function() {
-		return [];
+		//return App.User.findList();
 	},
 	setupController: function(c, m) {
 		//c.send('go');
@@ -509,6 +568,23 @@ App.FriendIndexRoute = Ember.Route.extend({
 App.ListPersonalDataSingleRoute = Ember.Route.extend({
 	model: function() {
 		this.transitionTo('list.personal-data');
+	},
+	setupController:function(c,m,t){
+		var _super = t.resolvedModels['list.personal-data'].userInfo;
+		c.set('nickname',_super.nickname);
+		c.set('avatar',_super.avatar);
+		c.set('model',m);
+	}
+});
+App.FriendPersonalDataSingleRoute = Ember.Route.extend({
+	model: function() {
+		this.transitionTo('friend.personal-data');
+	},
+	setupController:function(c,m,t){
+		var _super = t.resolvedModels['friend.personal-data'].userInfo;
+		c.set('nickname',_super.nickname);
+		c.set('avatar',_super.avatar);
+		c.set('model',m);
 	}
 })
 App.EditView = Ember.View.extend({

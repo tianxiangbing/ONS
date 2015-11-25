@@ -30,6 +30,10 @@ Ember.Router.map(function() {
 		}, function() {
 			this.route('personal-data', {
 				path: 'personal-data/:id'
+			}, function() {
+				this.route('single', {
+					path: 'single/:id'
+				});
 			});
 		});
 	});
@@ -95,7 +99,7 @@ App.ChangepwdRoute = Ember.Route.extend({
 });
 App.ListIndexRoute = Ember.Route.extend({
 	model: function() {
-		return [];
+		//return App.User.findList();
 	},
 	setupController: function(c, m) {
 		//c.send('go');
@@ -121,5 +125,22 @@ App.FriendIndexRoute = Ember.Route.extend({
 App.ListPersonalDataSingleRoute = Ember.Route.extend({
 	model: function() {
 		this.transitionTo('list.personal-data');
+	},
+	setupController:function(c,m,t){
+		var _super = t.resolvedModels['list.personal-data'].userInfo;
+		c.set('nickname',_super.nickname);
+		c.set('avatar',_super.avatar);
+		c.set('model',m);
+	}
+});
+App.FriendPersonalDataSingleRoute = Ember.Route.extend({
+	model: function() {
+		this.transitionTo('friend.personal-data');
+	},
+	setupController:function(c,m,t){
+		var _super = t.resolvedModels['friend.personal-data'].userInfo;
+		c.set('nickname',_super.nickname);
+		c.set('avatar',_super.avatar);
+		c.set('model',m);
 	}
 })

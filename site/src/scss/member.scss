@@ -128,7 +128,7 @@
         border-top:$border;
         padding:$toolbarPadding 0;
 
-        a{
+        .item{
             width:( $screenWidth - $toolbarPadding * 2 ) / 3;
             float:left;
             padding-right: $toolbarPadding;
