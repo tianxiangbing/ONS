@@ -311,12 +311,16 @@ App.FriendPersonalDataSingleController = Ember.ObjectController.extend({
 });
 
 App.WriteController = Ember.ObjectController.extend({
-	img:null,
-	uploaded:false,
-	actions:{
-		bindImg:function(url){
-			this.set('uploaded',true);
-			this.set('img',url);
+	img: null,
+	content: null,
+	uploaded: false,
+	actions: {
+		bindImg: function(url) {
+			this.set('uploaded', true);
+			this.set('img', url);
+		},
+		publish: function() {
+				App.Info.add({img:this.get('img'),content:this.get('content')});
 		}
 	}
 });
@@ -424,7 +428,15 @@ App.User.reopenClass({
 		})
 	}
 });
-
+App.Info=App.Model.extend();
+App.Info.reopenClass({
+	add:function(param){
+		return ajax({
+			url: 'publish',
+			data: param
+		})
+	}
+})
 var UserInfo={};
 /*
  * Created with Sublime Text 2.

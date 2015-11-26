@@ -102,5 +102,13 @@ App.User.reopenClass({
 		})
 	}
 });
-
+App.Info=App.Model.extend();
+App.Info.reopenClass({
+	add:function(param){
+		return ajax({
+			url: 'publish',
+			data: param
+		})
+	}
+})
 var UserInfo={};

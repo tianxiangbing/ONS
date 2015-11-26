@@ -478,31 +478,33 @@ body {
     display: block;
     float: right; }
 
-.write-content .counter {
-  position: relative; }
-  .write-content .counter em {
-    position: absolute;
-    bottom: 0;
-    right: .1rem;
-    font-style: normal;
-    font-size: 13px;
-    color: #999; }
-.write-content .txt-content {
-  line-height: 13px; }
-.write-content .upload-content {
-  display: table;
-  margin-top: 0.1rem; }
-  .write-content .upload-content .upload-img {
-    background-color: #e5e5e5;
-    width: 7.5rem;
-    height: 7.5rem;
-    text-align: center;
-    vertical-align: middle;
-    display: table-cell; }
-    .write-content .upload-content .upload-img .upload {
-      font-size: 1rem;
-      line-height: 7.5rem;
-      text-align: center; }
-    .write-content .upload-content .upload-img img {
-      max-width: 7.5rem;
-      max-height: 7.5rem; }
+.write-content {
+  padding-top: 0.1rem; }
+  .write-content .counter {
+    position: relative; }
+    .write-content .counter em {
+      position: absolute;
+      bottom: 0;
+      right: .1rem;
+      font-style: normal;
+      font-size: 13px;
+      color: #999; }
+  .write-content .txt-content {
+    line-height: 13px; }
+  .write-content .upload-content {
+    display: table;
+    margin-top: 0.1rem; }
+    .write-content .upload-content .upload-img {
+      background-color: #e5e5e5;
+      width: 7.5rem;
+      height: 7.5rem;
+      text-align: center;
+      vertical-align: middle;
+      display: table-cell; }
+      .write-content .upload-content .upload-img .upload {
+        font-size: 1rem;
+        line-height: 7.5rem;
+        text-align: center; }
+      .write-content .upload-content .upload-img img {
+        max-width: 7.5rem;
+        max-height: 7.5rem; }
