@@ -102,11 +102,11 @@ App.ListIndexController = Ember.ArrayController.extend({
 			//var d = this.get('model');
 			//var item = d.findBy('id',item.id);
 			//item.set('isFollow', true);
-			Ember.set(item,"isFollow",true)
+			Ember.set(item, "isFollow", true)
 		},
 		cancel: function(item) {
 			//item.set('isFollow', false);
-			Ember.set(item,"isFollow",false)
+			Ember.set(item, "isFollow", false)
 		},
 		go: function() {
 			var pageIndex = this.get('pageIndex');
@@ -149,6 +149,9 @@ App.FriendIndexController = Ember.Controller.extend({
 				that.set("model", that.get('List'));
 				that.set('ready', true)
 			});
+		},
+		linkInfo: function(item) {
+			this.transitionToRoute('friend.personal-data', item);
 		}
 	}
 });
@@ -173,20 +176,20 @@ App.ListPersonalDataIndexController = Ember.ObjectController.extend({
 		changePraises: function() {
 			this.toggleProperty('ispraises');
 		},
-		linkSingle:function(param){
+		linkSingle: function(param) {
 			console.log(param)
-			this.transitionToRoute('list.personal-data.single',param);
+			this.transitionToRoute('list.personal-data.single', param);
 		}
 	}
 });
 App.ListPersonalDataSingleController = Ember.ObjectController.extend({
-	needs:['ListPersonalDataIndex'],
-	nickname:null,
-	avatar:null,
+	needs: ['ListPersonalDataIndex'],
+	nickname: null,
+	avatar: null,
 	contentObserver: function() {
 		var m = this.get('model');
 		this.set('item', {
-			avatar:this.get('avatar'),
+			avatar: this.get('avatar'),
 			nickname: this.get('nickname'),
 			id: m.id,
 			publish: {
@@ -197,12 +200,17 @@ App.ListPersonalDataSingleController = Ember.ObjectController.extend({
 			}
 		});
 	}.observes('model'),
+	actions: {
+		linkInfo: function(item) {
+			this.transitionToRoute('list.personal-data', item);
+		}
+	}
 });
 
 App.FriendPersonalDataIndexController = Ember.ObjectController.extend({
 	ispraises: false,
-	nickname:null,
-	avatar:null,
+	nickname: null,
+	avatar: null,
 	contentObserver: function() {
 		//console.log('controller')
 		//console.log('Blog.BlogPostController contentObserver: ' + this.get('content.id'));
@@ -220,20 +228,20 @@ App.FriendPersonalDataIndexController = Ember.ObjectController.extend({
 		changePraises: function() {
 			this.toggleProperty('ispraises');
 		},
-		linkSingle:function(param){
+		linkSingle: function(param) {
 			console.log(param)
-			this.transitionToRoute('friend.personal-data.single',param);
+			this.transitionToRoute('friend.personal-data.single', param);
 		}
 	}
 });
 App.FriendPersonalDataSingleController = Ember.ObjectController.extend({
-	needs:['FriendPersonalDataIndex'],
-	nickname:null,
-	avatar:null,
+	needs: ['FriendPersonalDataIndex'],
+	nickname: null,
+	avatar: null,
 	contentObserver: function() {
 		var m = this.get('model');
 		this.set('item', {
-			avatar:this.get('avatar'),
+			avatar: this.get('avatar'),
 			nickname: this.get('nickname'),
 			id: m.id,
 			publish: {
@@ -244,4 +252,20 @@ App.FriendPersonalDataSingleController = Ember.ObjectController.extend({
 			}
 		});
 	}.observes('model'),
+	actions: {
+		linkInfo: function(item) {
+			this.transitionToRoute('friend.personal-data', item);
+		}
+	}
+});
+
+App.WriteController = Ember.ObjectController.extend({
+	img:null,
+	uploaded:false,
+	actions:{
+		bindImg:function(url){
+			this.set('uploaded',true);
+			this.set('img',url);
+		}
+	}
 });

@@ -22,6 +22,8 @@ body {
     letter-spacing: 2px;
     font-weight:500;
     background-color:transparent;
+    outline: none;
+    resize: none;
 }
 .txt-input[readonly]{
     border:none;
@@ -128,3 +130,4 @@ body {
 }
 @import "user-center";
 @import "member";
+@import "write";

@@ -1,0 +1,43 @@
+.write-content {
+    .counter {
+        position: relative;
+
+        em {
+            position: absolute;
+            bottom: 0;
+            right: .1rem;
+            font-style: normal;
+            font-size: $fontSize;
+            color: $grayColor;
+        }
+    }
+
+    .txt-content {
+        line-height: $fontSize;
+    }
+
+    .upload-content {
+        display: table;
+        margin-top: $toolbarPadding;
+
+        .upload-img {
+            background-color: #e5e5e5;
+            width: $screenWidth;
+            height: $screenWidth;
+            text-align: center;
+            vertical-align: middle;
+            display: table-cell;
+
+            .upload {
+                font-size: 1rem;
+                line-height: $screenWidth;
+                text-align: center;
+            }
+
+            img {
+                max-width: $screenWidth;
+                max-height: $screenWidth;
+            }
+        }
+    }
+}

@@ -1,0 +1,16 @@
+<div class="write-content">
+	<div class="counter">
+		{{textarea value=content class="txt-content txt-input" placeholder="想写点什么呢..."}}
+		<em></em>
+	</div>
+	<div class="upload-content">
+		<div class="upload-img">
+			{{#if uploaded}}
+			<img {{bind-attr src=img}}>
+			{{else}}
+			<div class="upload iconfont">&#xe618;</div>
+			{{/if}}
+		</div>
+	</div>
+	<button class="btn btn-big mt20 btn-green" {{action "publish"}}>发布</button>
+</div>
