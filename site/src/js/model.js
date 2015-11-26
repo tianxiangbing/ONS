@@ -107,8 +107,9 @@ App.Info.reopenClass({
 	add:function(param){
 		return ajax({
 			url: 'publish',
+			type:'post',
 			data: param
-		})
+		});
 	}
 })
 var UserInfo={};

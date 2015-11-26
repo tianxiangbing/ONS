@@ -320,7 +320,10 @@ App.WriteController = Ember.ObjectController.extend({
 			this.set('img', url);
 		},
 		publish: function() {
-				App.Info.add({img:this.get('img'),content:this.get('content')});
+			var  _this = this;
+			App.Info.add({img:this.get('img'),content:this.get('content')}).done(function(){
+				_this .transitionToRoute('friend');
+			});
 		}
 	}
 });
@@ -433,8 +436,9 @@ App.Info.reopenClass({
 	add:function(param){
 		return ajax({
 			url: 'publish',
+			type:'post',
 			data: param
-		})
+		});
 	}
 })
 var UserInfo={};
