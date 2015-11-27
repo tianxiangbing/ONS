@@ -9,7 +9,7 @@ module.exports = {
 		files: [{
 			expand: true,
 			cwd: 'site/src/lib/',
-			src: ['dialog/*.js','local*/*.js'],
+			src: ['**/*.js'],
 			dest: 'site/dist/lib'
 		}]
 	}
