@@ -29,11 +29,13 @@ App.Model.reopenClass({
 		});
 		return obj;
 	},
-	findAll: function(url, type, key,pageIndex) {
+	findAll: function(url, type, key, pageIndex) {
 		var collection = this;
 		return ajax({
 			url: url,
-			data:{page:pageIndex}
+			data: {
+				page: pageIndex
+			}
 		}).done(function(data) {
 			$.each(data[key], function(i, row) {
 				var item = collection.contentArrayContains(row.id, type);
@@ -55,18 +57,19 @@ App.User.reopenClass({
 	find: function(id) {
 		return App.Model.find(id, App.User)
 	},
-	findInfo:function(id){
+	findInfo: function(id) {
 		return ajax({
 			url: 'userinfo',
-			data: {id:id}
-		}).done(function(data){
-		});
+			data: {
+				id: id
+			}
+		}).done(function(data) {});
 	},
 	findAll: function(pageIndex) {
-		return App.Model.findAll('user', App.User, 'users',pageIndex||1);
+		return App.Model.findAll('user', App.User, 'users', pageIndex || 1);
 	},
-	findList:function(pageIndex){
-		return App.Model.findAll('list', App.User, 'users',pageIndex||1);
+	findList: function(pageIndex) {
+		return App.Model.findAll('list', App.User, 'users', pageIndex || 1);
 	},
 	checkToken: function() {
 		/*
@@ -77,10 +80,10 @@ App.User.reopenClass({
 				}
 			}).promise();
 			*/
-		var dtd= $.Deferred();
-		LocalStorageCache.get('token').done(function(){
+		var dtd = $.Deferred();
+		LocalStorageCache.get('token').done(function() {
 			dtd.resolve();
-		}).fail(function(){
+		}).fail(function() {
 			dtd.reject();
 		})
 		return dtd.promise();
@@ -89,27 +92,35 @@ App.User.reopenClass({
 		return ajax({
 			url: 'login',
 			data: user
-		}).done(function(data){
-		});
+		}).done(function(data) {});
 	},
-	logout:function(){
+	logout: function() {
 		LocalStorageCache.clear();
 	},
-	changepwd:function(user){
+	changepwd: function(user) {
 		return ajax({
-			url:'changepwd',
-			data:user
+			url: 'changepwd',
+			data: user
 		})
 	}
 });
-App.Info=App.Model.extend();
+App.Info = App.Model.extend();
 App.Info.reopenClass({
-	add:function(param){
+	add: function(param) {
 		return ajax({
 			url: 'publish',
-			type:'post',
+			type: 'post',
 			data: param
 		});
 	}
-})
-var UserInfo={};
+});
+App.Comment = App.Model.extend();
+App.Comment.reopenClass({
+	find: function(param) {
+		return ajax({
+			url:"comment",
+			data:param
+		});
+	}
+});
+var UserInfo = {};

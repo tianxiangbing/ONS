@@ -276,3 +276,13 @@ App.WriteController = Ember.ObjectController.extend({
 		}
 	}
 });
+App.CommentsController = Ember.ObjectController.extend({
+	actions:{
+		linkUser:function(item){
+			this.transitionToRoute("list.personal-data.index",item);
+		},
+		publish:function(){
+			this.transitionToRoute("friend");
+		}
+	}
+});

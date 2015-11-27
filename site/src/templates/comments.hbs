@@ -1,0 +1,17 @@
+<div class="write-content">
+	<div class="counter">
+		{{textarea value=msg class="txt-content txt-input" placeholder="想对他(她)写点什么呢..."}}
+		<em></em>
+	</div>
+	<div class="comment-list">
+		{{#each item in content}}
+		<div class="item">
+			{{#link-to "list.personal-data.index" item class="user-center menu-child"}}
+			{{item.nickname}}: 
+			{{/link-to}}
+			{{item.comment}}
+		</div>
+		{{/each}}
+	</div>
+	<button class="btn btn-big mt20 btn-green" {{action "publish"}}>comment</button>
+</div>

@@ -415,10 +415,25 @@ body {
   .mem-list .item .pub-img {
     background-color: #f2f2f2;
     text-align: center;
-    font-size: 0; }
+    font-size: 0;
+    position: relative; }
     .mem-list .item .pub-img img {
       max-width: 7.5rem;
       max-height: 7.5rem; }
+@keyframes like {
+  from {
+    top: 6.8rem;
+    opacity: 1; }
+  to {
+    top: 0;
+    display: none;
+    opacity: 0; } }
+    .mem-list .item .pub-img .like {
+      animation: like 5s;
+      position: absolute;
+      right: 0.1rem;
+      font-size: .7rem;
+      color: #ff4400; }
   .mem-list .item .pub-content {
     padding-bottom: 0.1rem; }
     .mem-list .item .pub-content .pub-imgs .pub-img {

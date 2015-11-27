@@ -36,6 +36,9 @@ Ember.Router.map(function() {
 				});
 			});
 		});
+		this.resource('comments',{path:'comments'},function(){
+			this.route('comment',{path:"/:id"})
+		});
 	});
 	this.route('login', {
 		path: 'login'
@@ -143,4 +146,9 @@ App.FriendPersonalDataSingleRoute = Ember.Route.extend({
 		c.set('avatar',_super.avatar);
 		c.set('model',m);
 	}
-})
+});
+App.CommentsRoute = Ember.Route.extend({
+	model:function(param){
+		return App.Comment.find(param);
+	}
+});

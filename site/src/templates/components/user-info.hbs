@@ -14,13 +14,16 @@
 	</div>
 	<div class="pub-content">
 		<div class="pub-img">
-			<img {{bind-attr src=item.publish.img}}>
+			<img {{bind-attr src=item.publish.img}} {{action "like" on="click"}}>
+			{{#each item.likeCollection}}
+			<i class="iconfont like">&#xe604;</i>
+			{{/each}}
 		</div>
 		<div class="pub-desc">
 			{{item.publish.desc}}
 		</div>
 		<div class="pub-praises">
-			{{item.publish.praises}} 个赞
+			{{item.publish.praises}} 个赞 {{#link-to "comments.comment" item  class="comment"}}<i class="iconfont">&#xe614;</i>{{/link-to}}
 		</div>
 	</div>
 </div>
