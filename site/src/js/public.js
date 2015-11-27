@@ -8,7 +8,7 @@
 function ajax(param) {
 	var dtd = $.Deferred();
 	Ember.$.ajax({
-		url: "json/" + param.url,
+		url: "json/" + param.url+".json",
 		dataType: 'jsonp',
 		data: param.data,
 		jsonpCallback: "callback",
